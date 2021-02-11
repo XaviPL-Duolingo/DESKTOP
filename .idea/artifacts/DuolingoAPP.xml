@@ -1,0 +1,33 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="DuolingoAPP">
+    <output-path>$PROJECT_DIR$/out/artifacts/Desktop</output-path>
+    <properties id="javafx-properties">
+      <options>
+        <option name="appClass" value="Main" />
+        <option name="customManifestAttributes">
+          <list>
+            <JavaFxManifestAttribute>
+              <option name="name" value="--module-path X:\DuolingoAPP\DESKTOP\src\main\resources\javafx-sdk-11.0.2\lib --add-modules javafx.controls,javafx.fxml" />
+              <option name="value" value="" />
+            </JavaFxManifestAttribute>
+          </list>
+        </option>
+        <option name="description" value="" />
+        <option name="htmlPlaceholderId" value="" />
+        <option name="nativeBundle" value="all" />
+        <option name="title" value="Buholingo" />
+        <option name="vendor" value="" />
+        <option name="version" value="" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="DuolingoApp.jar">
+        <element id="directory" name="META-INF">
+          <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+        </element>
+        <element id="module-output" name="DESKTOP" />
+        <element id="module-output" name="LIB" />
+      </element>
+    </root>
+  </artifact>
+</component>
