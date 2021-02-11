@@ -94,7 +94,7 @@
                     </opaqueInsets></Label>
                 <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@windows/res/iconApp.png" />
+                        <Image url="@res/iconApp.png" />
                     </image>
                 </ImageView>
             </items>

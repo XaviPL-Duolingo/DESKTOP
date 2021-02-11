@@ -19,8 +19,9 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(url);
         Scene scene = new Scene(root);
         scene.setFill(Color.TRANSPARENT);
-
-        // primaryStage.getIcons().add(new Image(Main.class.getResourceAsStream("windows/res/iconApp.png")));
+        url = new File("src/main/java/res/iconApp.png").toURI().toURL();
+        Image icon = new Image(String.valueOf(url));
+        primaryStage.getIcons().add(icon);
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setScene(scene);
         primaryStage.show();

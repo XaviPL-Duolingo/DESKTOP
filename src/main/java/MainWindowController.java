@@ -137,6 +137,9 @@ public class MainWindowController implements Initializable {
         listCategories.getItems().clear();
         listLevels.getItems().clear();
 
+        btnCreateCategory.setDisable(true);
+        btnCreateLevel.setDisable(true);
+
         List<Course> courseList = courseManager.getAllCoursesByID(idOriginLang, idDestLang);
         ObservableList<Course> courseMenu = FXCollections.observableArrayList();
         courseMenu.addAll(courseList);
@@ -174,6 +177,7 @@ public class MainWindowController implements Initializable {
             categoryMenu.addAll(categoryList);
             listCategories.setItems(categoryMenu);
             btnCreateCategory.setDisable(false);
+            btnCreateLevel.setDisable(true);
         }catch (Exception e){
             System.out.println("[DEBUG] - No hay CURSO seleccionado...");
         }

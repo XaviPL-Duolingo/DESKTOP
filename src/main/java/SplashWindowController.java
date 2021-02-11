@@ -41,11 +41,13 @@ public class SplashWindowController implements Initializable {
                             Parent root = FXMLLoader.load(url);
                             Scene scene = new Scene(root);
                             scene.setFill(Color.TRANSPARENT);
-                            scene.getStylesheets().add("mainWindow.css");
-
+                            url = new File("src/main/java/mainWindow.css").toURI().toURL();
+                            scene.getStylesheets().add(String.valueOf(url));
 
                             Stage stage = new Stage();
-                            // stage.getIcons().add(new Image(SplashWindowController.class.getResourceAsStream("res/iconApp.png")));
+                            url = new File("src/main/java/res/iconApp.png").toURI().toURL();
+                            Image icon = new Image(String.valueOf(url));
+                            stage.getIcons().add(icon);
                             stage.setTitle("Buholingo | DESKTOP");
                             stage.initStyle(StageStyle.UNDECORATED);
                             stage.setScene(scene);
