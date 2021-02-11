@@ -1,4 +1,3 @@
-package windows;
 
 import com.duolingo.app.interfaces.impl.*;
 import com.duolingo.app.model.*;
@@ -118,6 +117,8 @@ public class MainWindowController implements Initializable {
         int idOriginLang = cmbOriginLanguage.getValue().getIdLanguage();
         int idDestLang = cmbDestLanguage.getValue().getIdLanguage();
 
+        System.out.println(idOriginLang + "//" +  idDestLang);
+
         if (idOriginLang != idDestLang){
             applyFilter(idOriginLang, idDestLang);
         }else{
@@ -135,7 +136,6 @@ public class MainWindowController implements Initializable {
         listCourses.getItems().clear();
         listCategories.getItems().clear();
         listLevels.getItems().clear();
-
 
         List<Course> courseList = courseManager.getAllCoursesByID(idOriginLang, idDestLang);
         ObservableList<Course> courseMenu = FXCollections.observableArrayList();

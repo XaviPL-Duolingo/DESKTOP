@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: #100C1C;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="windows.MainWindowController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: #100C1C;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainWindowController">
     <children>
         <Pane fx:id="menuPane" layoutY="40.0" prefHeight="680.0" prefWidth="250.0" style="-fx-background-color: #1D182F;">
             <children>
@@ -41,9 +41,9 @@
             </children></Pane>
         <Pane layoutX="250.0" layoutY="40.0" prefHeight="680.0" prefWidth="1030.0" style="-fx-background-color: #100C1C;">
             <children>
-                <ListView fx:id="listCourses" layoutX="84.0" layoutY="177.0" onMouseClicked="#checkCategories" prefHeight="350.0" prefWidth="250.0" style="-fx-background-radius: 30; -fx-background-color: #1D182F;" />
-                <ListView fx:id="listCategories" layoutX="388.0" layoutY="177.0" onMouseClicked="#checkLevels" prefHeight="350.0" prefWidth="250.0" style="-fx-background-radius: 30; -fx-background-color: #1D182F;" />
-                <ListView fx:id="listLevels" layoutX="697.0" layoutY="177.0" onMouseClicked="#checkExercices" prefHeight="350.0" prefWidth="250.0" style="-fx-background-radius: 30; -fx-background-color: #1D182F;" />
+                <ListView fx:id="listCourses" layoutX="84.0" layoutY="177.0" onMouseClicked="#checkCategories" prefHeight="350.0" prefWidth="250.0" style="-fx-background-radius: 30; -fx-background-color: #1D182F;" stylesheets="@mainWindow.css" />
+                <ListView fx:id="listCategories" layoutX="388.0" layoutY="177.0" onMouseClicked="#checkLevels" prefHeight="350.0" prefWidth="250.0" style="-fx-background-radius: 30; -fx-background-color: #1D182F;" stylesheets="@mainWindow.css" />
+                <ListView fx:id="listLevels" layoutX="697.0" layoutY="177.0" onMouseClicked="#checkExercices" prefHeight="350.0" prefWidth="250.0" style="-fx-background-radius: 30; -fx-background-color: #1D182F;" stylesheets="@mainWindow.css" />
                 <Button fx:id="btnCreateCourse" layoutX="84.0" layoutY="549.0" mnemonicParsing="false" onMouseClicked="#createCourse" prefHeight="50.0" prefWidth="250.0" style="-fx-background-radius: 30; -fx-background-color: linear-gradient(to top right, #FF00EE, #6E00FF);" text="CREAR CURSO" textFill="WHITE">
                     <font>
                         <Font name="Calibri Bold" size="20.0" />
@@ -94,7 +94,7 @@
                     </opaqueInsets></Label>
                 <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@res/iconApp.png" />
+                        <Image url="@windows/res/iconApp.png" />
                     </image>
                 </ImageView>
             </items>

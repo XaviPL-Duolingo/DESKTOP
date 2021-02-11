@@ -1,5 +1,3 @@
-package windows;
-
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +10,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -38,14 +37,15 @@ public class SplashWindowController implements Initializable {
                     @Override
                     public void run() {
                         try {
-                            Parent root = FXMLLoader.load(getClass().getResource("mainWindow.fxml"));
+                            URL url = new File("src/main/java/mainWindow.fxml").toURI().toURL();
+                            Parent root = FXMLLoader.load(url);
                             Scene scene = new Scene(root);
                             scene.setFill(Color.TRANSPARENT);
-                            scene.getStylesheets().add("windows/mainWindow.css");
+                            scene.getStylesheets().add("mainWindow.css");
 
 
                             Stage stage = new Stage();
-                            stage.getIcons().add(new Image(SplashWindowController.class.getResourceAsStream("res/iconApp.png")));
+                            // stage.getIcons().add(new Image(SplashWindowController.class.getResourceAsStream("res/iconApp.png")));
                             stage.setTitle("Buholingo | DESKTOP");
                             stage.initStyle(StageStyle.UNDECORATED);
                             stage.setScene(scene);
