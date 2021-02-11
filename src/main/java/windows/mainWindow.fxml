@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: #100C1C;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.windows.MainWindowController">
+    <children>
+        <Pane fx:id="menuPane" layoutY="40.0" prefHeight="680.0" prefWidth="250.0" style="-fx-background-color: #1D182F;">
+            <children>
+                <VBox prefHeight="680.0" prefWidth="250.0">
+                    <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                            <children>
+                                <FontAwesomeIcon fill="WHITE" glyphName="DASHBOARD" selectionEnd="1" selectionStart="1" size="3em" textAlignment="CENTER">
+                                    <HBox.margin>
+                                        <Insets left="25.0" />
+                                    </HBox.margin>
+                                </FontAwesomeIcon>
+                                <Label text="GENERAL" textAlignment="CENTER" textFill="WHITE">
+                                    <font>
+                                        <Font name="Calibri Bold" size="24.0" />
+                                    </font>
+                                    <opaqueInsets>
+                                        <Insets />
+                                    </opaqueInsets>
+                                    <HBox.margin>
+                                        <Insets left="25.0" right="25.0" />
+                                    </HBox.margin>
+                                </Label>
+                            </children>
+                        </HBox>
+                    </children>
+                    <padding>
+                        <Insets top="75.0" />
+                    </padding>
+                </VBox>
+            </children></Pane>
+        <Pane layoutX="250.0" layoutY="40.0" prefHeight="680.0" prefWidth="1030.0" style="-fx-background-color: #100C1C;">
+            <children>
+                <ListView fx:id="listCourses" layoutX="84.0" layoutY="177.0" onMouseClicked="#checkCategories" prefHeight="350.0" prefWidth="250.0" style="-fx-background-radius: 30; -fx-background-color: #1D182F;" />
+                <ListView fx:id="listCategories" layoutX="388.0" layoutY="177.0" onMouseClicked="#checkLevels" prefHeight="350.0" prefWidth="250.0" style="-fx-background-radius: 30; -fx-background-color: #1D182F;" />
+                <ListView fx:id="listLevels" layoutX="697.0" layoutY="177.0" onMouseClicked="#checkExercices" prefHeight="350.0" prefWidth="250.0" style="-fx-background-radius: 30; -fx-background-color: #1D182F;" />
+                <Button fx:id="btnCreateCourse" layoutX="84.0" layoutY="549.0" mnemonicParsing="false" onMouseClicked="#createCourse" prefHeight="50.0" prefWidth="250.0" style="-fx-background-radius: 30; -fx-background-color: linear-gradient(to top right, #FF00EE, #6E00FF);" text="CREAR CURSO" textFill="WHITE">
+                    <font>
+                        <Font name="Calibri Bold" size="20.0" />
+                    </font></Button>
+                <Button fx:id="btnCreateCategory" layoutX="388.0" layoutY="549.0" mnemonicParsing="false" onMouseClicked="#createCategory" prefHeight="50.0" prefWidth="250.0" style="-fx-background-radius: 30; -fx-background-color: linear-gradient(to top right, #FF00EE, #6E00FF);" text="CREAR CATEGORÍA" textFill="WHITE">
+                    <font>
+                        <Font name="Calibri Bold" size="20.0" />
+                    </font>
+                </Button>
+                <Button fx:id="btnCreateLevel" layoutX="697.0" layoutY="549.0" mnemonicParsing="false" onMouseClicked="#createLevel" prefHeight="50.0" prefWidth="250.0" style="-fx-background-radius: 30; -fx-background-color: linear-gradient(to top right, #FF00EE, #6E00FF);" text="CREAR NIVEL" textFill="WHITE">
+                    <font>
+                        <Font name="Calibri Bold" size="20.0" />
+                    </font>
+                </Button>
+                <Button fx:id="btnApplyFilter" layoutX="697.0" layoutY="104.0" mnemonicParsing="false" onMouseClicked="#checkCourses" prefHeight="50.0" prefWidth="250.0" style="-fx-background-radius: 30; -fx-background-color: linear-gradient(to top right, #FF00EE, #6E00FF);" text="FILTRA!" textFill="WHITE">
+                    <font>
+                        <Font name="Calibri Bold" size="20.0" />
+                    </font>
+                </Button>
+                <ComboBox fx:id="cmbDestLanguage" layoutX="390.0" layoutY="104.0" prefHeight="50.0" prefWidth="250.0" style="-fx-background-radius: 30; -fx-background-color: #1D182F;" stylesheets="@mainWindow.css" visibleRowCount="8" />
+                <ComboBox fx:id="cmbOriginLanguage" layoutX="84.0" layoutY="104.0" prefHeight="50.0" prefWidth="250.0" style="-fx-background-radius: 30; -fx-background-color: #1D182F;" stylesheets="@mainWindow.css" visibleRowCount="8" />
+                <Label layoutX="135.0" layoutY="66.0" text="IDIOMA ORIGEN" textFill="WHITE">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Label>
+                <Label layoutX="435.0" layoutY="66.0" text="IDIOMA DESTINO" textFill="WHITE">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Label>
+            </children></Pane>
+        <ToolBar nodeOrientation="RIGHT_TO_LEFT" onMouseDragged="#windowDrag" onMousePressed="#windowPressed" prefHeight="40.0" prefWidth="1280.0" style="-fx-background-color: linear-gradient(to top left, #FF00EE, #6E00FF);">
+            <items>
+                <HBox alignment="CENTER_LEFT" maxHeight="30.0" maxWidth="1075.0" minHeight="30.0" minWidth="1075.0" prefHeight="30.0" prefWidth="1075.0">
+                    <children>
+                        <FontAwesomeIcon fill="#d3d3d3" glyphName="CIRCLE" onMouseClicked="#close" size="1.2em" textAlignment="CENTER" wrappingWidth="21.285714149475098" />
+                        <FontAwesomeIcon fill="#9e9a9a" glyphName="CIRCLE" size="1.2em" textAlignment="CENTER" wrappingWidth="21.285714149475098" />
+                        <FontAwesomeIcon fill="#d3d3d3" glyphName="CIRCLE" onMouseClicked="#minimize" size="1.2em" textAlignment="CENTER" wrappingWidth="21.285714149475098" />
+                    </children>
+                </HBox>
+                <Label text="BUHOLINGO | DESKTOP" textFill="WHITE">
+                    <padding>
+                        <Insets left="10.0" />
+                    </padding>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets></Label>
+                <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@res/iconApp.png" />
+                    </image>
+                </ImageView>
+            </items>
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+        </ToolBar>
+    </children>
+</Pane>

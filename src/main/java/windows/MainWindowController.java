@@ -1,7 +1,15 @@
-package windows.res;
+package windows;
 
+import com.duolingo.app.interfaces.impl.*;
+import com.duolingo.app.model.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 import javax.swing.*;
 import java.net.URL;
