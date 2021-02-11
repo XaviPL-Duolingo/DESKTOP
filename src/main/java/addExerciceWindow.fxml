@@ -3,8 +3,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="720.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AddExerciceWindowController">
+<AnchorPane prefHeight="720.0" prefWidth="480.0" style="-fx-background-color: #100C1C;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AddExerciceWindowController">
     <children>
-        <ToolBar prefHeight="40.0" prefWidth="480.0" />
+        <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="480.0" style="-fx-background-color: linear-gradient(to top left, #FF00EE, #6E00FF);">
+         <items>
+            <HBox alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="200.0" />
+         </items></ToolBar>
     </children>
 </AnchorPane>

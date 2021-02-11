@@ -4,16 +4,25 @@ import com.duolingo.app.model.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import javax.swing.*;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 
 public class MainWindowController implements Initializable {
 
@@ -232,4 +241,20 @@ public class MainWindowController implements Initializable {
 
     }
 
+    @FXML
+    void showExercices() {
+        try {
+            URL url = new File("src/main/java/addExerciceWindow.fxml").toURI().toURL();
+            Parent root = FXMLLoader.load(url);
+            Scene scene = new Scene(root);
+            scene.setFill(Color.TRANSPARENT);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("Buholingo | LISTA EJERCICIOS");
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
