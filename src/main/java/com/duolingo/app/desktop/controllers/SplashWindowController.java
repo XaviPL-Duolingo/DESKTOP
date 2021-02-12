@@ -43,7 +43,7 @@ public class SplashWindowController implements Initializable {
                             Parent root = FXMLLoader.load(url);
                             Scene scene = new Scene(root);
                             scene.setFill(Color.TRANSPARENT);
-                            url = new File("src/main/java/com/duolingo/app/desktop/windows/mainWindow.css").toURI().toURL();
+                            url = new File("src/main/java/com/duolingo/app/desktop/res/mainWindow.css").toURI().toURL();
                             scene.getStylesheets().add(String.valueOf(url));
 
                             Stage stage = new Stage();

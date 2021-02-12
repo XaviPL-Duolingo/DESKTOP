@@ -1,5 +1,16 @@
+@font-face {
+    font-family: 'DIN Round';
+    src: url('DINRoundPro.ttf') format('ttf');
+}
+
+@font-face {
+    font-family: 'DIN Round Bold';
+    src: url('DINRoundPro-Bold.ttf') format('ttf');
+}
+
 .root{
     -fx-background-radius: 30;
+    -fx-font-family: 'DIN Round';
 }
 
 .combo-box {
@@ -15,11 +26,13 @@
     -fx-background-insets: 23 0 10 0;
     -fx-padding: 23 0 0 0;
     -fx-text-fill: #FFFFFF;
+    -fx-font-family: 'DIN Round';
 }
 
 .combo-box-popup .list-view .list-cell{
     -fx-background-color:  transparent;
     -fx-text-fill: #FFFFFF;
+    -fx-font-family: 'DIN Round';
     -fx-cell-size: 45;
 
 }

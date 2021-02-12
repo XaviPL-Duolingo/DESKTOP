@@ -245,7 +245,7 @@ public class MainWindowController implements Initializable {
             URL url = new File("src/main/java/com/duolingo/app/desktop/windows/addExerciceWindow.fxml").toURI().toURL();
             Parent root = FXMLLoader.load(url);
             Scene scene = new Scene(root);
-            url = new File("src/main/java/com/duolingo/app/desktop/windows/addExerciceWindow.css").toURI().toURL();
+            url = new File("src/main/java/com/duolingo/app/desktop/res/addExerciceWindow.css").toURI().toURL();
             Stage stage = new Stage();
             // stage.setOpacity(0.5);
             stage.setX(event.getScreenX()-event.getSceneX());
