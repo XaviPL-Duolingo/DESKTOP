@@ -59,7 +59,10 @@
 }
 
 .button{
-    -fx-background-radius: 30 0 0 30;
+    -fx-background-radius: 30;
     -fx-text-fill: #FFFFFF;
 }
 
+.jfx-toggle-button{
+    -jfx-disable-visual-focus: true;
+}

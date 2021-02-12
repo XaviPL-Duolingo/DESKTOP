@@ -1,4 +1,4 @@
-package com.duolingo.app.desktop;
+package com.duolingo.app.desktop.controllers;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;

@@ -1,7 +1,9 @@
-package com.duolingo.app.desktop;
+package com.duolingo.app.desktop.controllers;
 
 import com.duolingo.app.interfaces.impl.*;
 import com.duolingo.app.model.*;
+import com.duolingo.app.util.ServerRMI;
+import com.jfoenix.controls.JFXToggleButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -13,17 +15,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
 import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.Scanner;
 
 public class MainWindowController implements Initializable {
 
@@ -32,35 +31,15 @@ public class MainWindowController implements Initializable {
     private CategoryImpl categoryManager = new CategoryImpl();
     private LevelImpl levelManager = new LevelImpl();
 
-
     private double x, y;
 
-    @FXML
-    private ListView<Course> listCourses;
-
-    @FXML
-    private ListView<Category> listCategories;
-
-    @FXML
-    private ListView<Level> listLevels;
-
-    @FXML
-    private Button btnCreateCourse;
-
-    @FXML
-    private Button btnCreateCategory;
-
-    @FXML
-    private Button btnCreateLevel;
-
-    @FXML
-    private Button btnApplyFilter;
-
-    @FXML
-    public ComboBox<Language> cmbDestLanguage;
-
-    @FXML
-    private ComboBox<Language> cmbOriginLanguage;
+    @FXML    private JFXToggleButton btnServer;
+    @FXML    private ListView<Course> listCourses;
+    @FXML    private ListView<Category> listCategories;
+    @FXML    private ListView<Level> listLevels;
+    @FXML    private Button btnCreateCourse, btnCreateCategory, btnCreateLevel, btnCreateExercice, btnShowExercice;
+    @FXML    public ComboBox<Language> cmbDestLanguage;
+    @FXML    private ComboBox<Language> cmbOriginLanguage;
 
     @FXML
     void windowDrag(MouseEvent event) {
@@ -98,6 +77,8 @@ public class MainWindowController implements Initializable {
         btnCreateCourse.setDisable(true);
         btnCreateCategory.setDisable(true);
         btnCreateLevel.setDisable(true);
+        btnCreateExercice.setDisable(true);
+        btnShowExercice.setDisable(true);
 
         // COMBOBOXES Y FILTRO DE CURSOS
 
@@ -112,7 +93,6 @@ public class MainWindowController implements Initializable {
 
         cmbDestLanguage.setItems(languageMenu);
         cmbDestLanguage.setValue(languageMenu.get(0));
-
 
     }
 
@@ -149,6 +129,8 @@ public class MainWindowController implements Initializable {
 
         btnCreateCategory.setDisable(true);
         btnCreateLevel.setDisable(true);
+        btnCreateExercice.setDisable(true);
+        btnShowExercice.setDisable(true);
 
         List<Course> courseList = courseManager.getAllCoursesByID(idOriginLang, idDestLang);
         ObservableList<Course> courseMenu = FXCollections.observableArrayList();
@@ -188,6 +170,8 @@ public class MainWindowController implements Initializable {
             listCategories.setItems(categoryMenu);
             btnCreateCategory.setDisable(false);
             btnCreateLevel.setDisable(true);
+            btnCreateExercice.setDisable(true);
+            btnShowExercice.setDisable(true);
         }catch (Exception e){
             System.out.println("[DEBUG] - No hay CURSO seleccionado...");
         }
@@ -215,6 +199,8 @@ public class MainWindowController implements Initializable {
             levelMenu.addAll(levelList);
             listLevels.setItems(levelMenu);
             btnCreateLevel.setDisable(false);
+            btnCreateExercice.setDisable(true);
+            btnShowExercice.setDisable(true);
         }catch (Exception e){
             System.out.println("[DEBUG] - No hay CATEGORIA seleccionada...");
         }
@@ -235,7 +221,8 @@ public class MainWindowController implements Initializable {
     void checkExercices(){
 
         try{
-            int idLevel = listLevels.getSelectionModel().getSelectedItem().getIdLevel();
+            btnCreateExercice.setDisable(false);
+            btnShowExercice.setDisable(false);
         }catch (Exception e){
             System.out.println("[DEBUG] - No hay LEVEL seleccionado...");
         }
@@ -243,9 +230,10 @@ public class MainWindowController implements Initializable {
     }
 
     @FXML
-    void showExercices() {
+    void createExercice() {
         try {
-            URL url = new File("src/main/java/addExerciceWindow.fxml").toURI().toURL();
+            int idLevel = listLevels.getSelectionModel().getSelectedItem().getIdLevel();
+            URL url = new File("src/main/java/com/duolingo/app/desktop/windows/addExerciceWindow.fxml").toURI().toURL();
             Parent root = FXMLLoader.load(url);
             Scene scene = new Scene(root);
             scene.setFill(Color.TRANSPARENT);
@@ -258,4 +246,19 @@ public class MainWindowController implements Initializable {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    void showExercice(){
+
+    }
+
+    @FXML
+    void serverStatus(){
+        if (btnServer.isSelected()){
+            new ServerRMI();
+        }else {
+            new ServerRMI().stopServer();
+        }
+    }
+
 }
