@@ -19,7 +19,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: #100C1C;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.duolingo.app.desktop.controllers.MainWindowController">
+<Pane fx:id="mainPane" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: #100C1C;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.duolingo.app.desktop.controllers.MainWindowController">
     <children>
         <Pane fx:id="menuPane" layoutY="40.0" prefHeight="680.0" prefWidth="250.0" style="-fx-background-color: #1D182F;">
             <children>
@@ -146,7 +146,7 @@
                 </Button>
                 <ComboBox fx:id="cmbDestLanguage" layoutX="390.0" layoutY="104.0" prefHeight="50.0" prefWidth="250.0" style="-fx-background-radius: 30; -fx-background-color: #1D182F;" stylesheets="@mainWindow.css" visibleRowCount="8" />
                 <ComboBox fx:id="cmbOriginLanguage" layoutX="84.0" layoutY="104.0" prefHeight="50.0" prefWidth="250.0" style="-fx-background-radius: 30; -fx-background-color: #1D182F;" stylesheets="@mainWindow.css" visibleRowCount="8" />
-                <Label layoutX="135.0" layoutY="66.0" text="IDIOMA ORIGEN" textFill="WHITE">
+                <Label fx:id="lblOriginLang" layoutX="135.0" layoutY="66.0" text="IDIOMA ORIGEN" textFill="WHITE">
                     <font>
                         <Font size="20.0" />
                     </font>
@@ -156,6 +156,7 @@
                         <Font size="20.0" />
                     </font>
                 </Label>
+            <Pane fx:id="addExercicePane" layoutX="288.0" layoutY="-46.0" prefHeight="200.0" prefWidth="200.0" />
             </children></Pane>
         <ToolBar nodeOrientation="RIGHT_TO_LEFT" onMouseDragged="#windowDrag" onMousePressed="#windowPressed" prefHeight="40.0" prefWidth="1280.0" style="-fx-background-color: linear-gradient(to top left, #FF00EE, #6E00FF);">
             <items>
@@ -183,6 +184,5 @@
                 <Insets />
             </opaqueInsets>
         </ToolBar>
-      <Pane fx:id="layerBlack" disable="true" opacity="0.75" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: black;" visible="false" />
     </children>
 </Pane>

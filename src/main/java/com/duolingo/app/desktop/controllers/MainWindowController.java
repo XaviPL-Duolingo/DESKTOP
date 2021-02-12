@@ -4,6 +4,8 @@ import com.duolingo.app.interfaces.impl.*;
 import com.duolingo.app.model.*;
 import com.duolingo.app.util.ServerRMI;
 import com.jfoenix.controls.JFXToggleButton;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -14,6 +16,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -22,11 +25,13 @@ import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 
 public class MainWindowController implements Initializable {
 
+    private static MainWindowController instance;
     private LanguageImpl languageManager = new LanguageImpl();
     private CourseImpl courseManager = new CourseImpl();
     private CategoryImpl categoryManager = new CategoryImpl();
@@ -34,7 +39,7 @@ public class MainWindowController implements Initializable {
 
     public static double x, y;
 
-    @FXML    private Pane mainPane, layerBlack;
+    @FXML    private Pane mainPane;
     @FXML    private JFXToggleButton btnServer;
     @FXML    private ListView<Course> listCourses;
     @FXML    private ListView<Category> listCategories;
@@ -42,6 +47,11 @@ public class MainWindowController implements Initializable {
     @FXML    private Button btnCreateCourse, btnCreateCategory, btnCreateLevel, btnCreateExercice, btnShowExercice;
     @FXML    private ComboBox<Language> cmbDestLanguage;
     @FXML    private ComboBox<Language> cmbOriginLanguage;
+    @FXML    private Label lblOriginLang;
+
+    public MainWindowController(){
+        instance = this;
+    }
 
     @FXML
     void windowDrag(MouseEvent event) {
@@ -230,22 +240,25 @@ public class MainWindowController implements Initializable {
     @FXML
     void createExercice(MouseEvent event) {
         try {
+
             int idLevel = listLevels.getSelectionModel().getSelectedItem().getIdLevel();
             URL url = new File("src/main/java/com/duolingo/app/desktop/windows/addExerciceWindow.fxml").toURI().toURL();
             Parent root = FXMLLoader.load(url);
             Scene scene = new Scene(root);
-            scene.setFill(Color.TRANSPARENT);
+            url = new File("src/main/java/com/duolingo/app/desktop/windows/addExerciceWindow.css").toURI().toURL();
             Stage stage = new Stage();
-            stage.setScene(scene);
-
-            stage.setX(event.getScreenX()-event.getSceneX()+400);
+            // stage.setOpacity(0.5);
+            stage.setX(event.getScreenX()-event.getSceneX());
             stage.setY(event.getScreenY()-event.getSceneY());
-
             stage.setTitle("Buholingo | LISTA EJERCICIOS");
-            stage.initStyle(StageStyle.UNDECORATED);
+
+            stage.initStyle(StageStyle.TRANSPARENT);
+            scene.setFill(Color.TRANSPARENT);
+            scene.getStylesheets().add(String.valueOf(url));
+
+            stage.setScene(scene);
             stage.show();
-            layerBlack.setDisable(false);
-            layerBlack.setVisible(true);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -263,13 +276,6 @@ public class MainWindowController implements Initializable {
         }else {
             new ServerRMI().stopServer();
         }
-    }
-
-    public void restorePanel(){
-        System.out.println("patata");
-        layerBlack.setVisible(false);
-        layerBlack.setDisable(true);
-
     }
 
 }
