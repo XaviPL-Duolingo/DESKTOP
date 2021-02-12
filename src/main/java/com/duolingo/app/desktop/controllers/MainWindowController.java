@@ -14,6 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -31,19 +32,19 @@ public class MainWindowController implements Initializable {
     private CategoryImpl categoryManager = new CategoryImpl();
     private LevelImpl levelManager = new LevelImpl();
 
-    private double x, y;
+    public static double x, y;
 
+    @FXML    private Pane layerBlack;
     @FXML    private JFXToggleButton btnServer;
     @FXML    private ListView<Course> listCourses;
     @FXML    private ListView<Category> listCategories;
     @FXML    private ListView<Level> listLevels;
     @FXML    private Button btnCreateCourse, btnCreateCategory, btnCreateLevel, btnCreateExercice, btnShowExercice;
-    @FXML    public ComboBox<Language> cmbDestLanguage;
+    @FXML    private ComboBox<Language> cmbDestLanguage;
     @FXML    private ComboBox<Language> cmbOriginLanguage;
 
     @FXML
     void windowDrag(MouseEvent event) {
-
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setX(event.getScreenX() - x);
         stage.setY(event.getScreenY() - y);
@@ -97,7 +98,7 @@ public class MainWindowController implements Initializable {
     }
 
     @FXML
-    void checkCourses(){
+    void checkCourses(MouseEvent event){
 
         listCourses.getItems().clear();
         listCategories.getItems().clear();
@@ -157,7 +158,7 @@ public class MainWindowController implements Initializable {
     }
 
     @FXML
-    void checkCategories(){
+    void checkCategories(MouseEvent event){
 
         listCategories.getItems().clear();
         listLevels.getItems().clear();
@@ -178,17 +179,17 @@ public class MainWindowController implements Initializable {
 
     }
     @FXML
-    void createCategory(){
+    void createCategory(MouseEvent event){
 
         int idCourse = listCourses.getSelectionModel().getSelectedItem().getIdCourse();
         String nameCourse = JOptionPane.showInputDialog("Nombre de la categoría?");
         categoryManager.insertCategory(idCourse, nameCourse);
-        checkCategories();
+        checkCategories(event);
 
     }
 
     @FXML
-    void checkLevels(){
+    void checkLevels(MouseEvent event){
 
         listLevels.getItems().clear();
 
@@ -208,17 +209,17 @@ public class MainWindowController implements Initializable {
     }
 
     @FXML
-    void createLevel(){
+    void createLevel(MouseEvent event){
 
         int idCategory = listCategories.getSelectionModel().getSelectedItem().getIdCategory();
         String codeLevel = JOptionPane.showInputDialog("Identificador del nivel?");
         levelManager.insertLevel(idCategory, codeLevel);
-        checkLevels();
+        checkLevels(event);
 
     }
 
     @FXML
-    void checkExercices(){
+    void checkExercices(MouseEvent event){
 
         try{
             btnCreateExercice.setDisable(false);
@@ -230,7 +231,7 @@ public class MainWindowController implements Initializable {
     }
 
     @FXML
-    void createExercice() {
+    void createExercice(MouseEvent event) {
         try {
             int idLevel = listLevels.getSelectionModel().getSelectedItem().getIdLevel();
             URL url = new File("src/main/java/com/duolingo/app/desktop/windows/addExerciceWindow.fxml").toURI().toURL();
@@ -239,16 +240,22 @@ public class MainWindowController implements Initializable {
             scene.setFill(Color.TRANSPARENT);
             Stage stage = new Stage();
             stage.setScene(scene);
+
+            stage.setX(event.getScreenX()-event.getSceneX()+400);
+            stage.setY(event.getScreenY()-event.getSceneY());
+
             stage.setTitle("Buholingo | LISTA EJERCICIOS");
             stage.initStyle(StageStyle.UNDECORATED);
             stage.show();
+            layerBlack.setDisable(false);
+            layerBlack.setVisible(true);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     @FXML
-    void showExercice(){
+    void showExercice(MouseEvent event){
 
     }
 
