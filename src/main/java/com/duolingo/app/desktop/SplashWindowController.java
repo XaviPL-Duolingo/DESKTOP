@@ -1,3 +1,5 @@
+package com.duolingo.app.desktop;
+
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -37,15 +39,15 @@ public class SplashWindowController implements Initializable {
                     @Override
                     public void run() {
                         try {
-                            URL url = new File("src/main/java/mainWindow.fxml").toURI().toURL();
+                            URL url = new File("src/main/java/com/duolingo/app/desktop/windows/mainWindow.fxml").toURI().toURL();
                             Parent root = FXMLLoader.load(url);
                             Scene scene = new Scene(root);
                             scene.setFill(Color.TRANSPARENT);
-                            url = new File("src/main/java/mainWindow.css").toURI().toURL();
+                            url = new File("src/main/java/com/duolingo/app/desktop/windows/mainWindow.css").toURI().toURL();
                             scene.getStylesheets().add(String.valueOf(url));
 
                             Stage stage = new Stage();
-                            url = new File("src/main/java/res/iconApp.png").toURI().toURL();
+                            url = new File("src/main/java/com/duolingo/app/desktop/res/iconApp.png").toURI().toURL();
                             Image icon = new Image(String.valueOf(url));
                             stage.getIcons().add(icon);
                             stage.setTitle("Buholingo | DESKTOP");

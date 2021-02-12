@@ -1,3 +1,5 @@
+package com.duolingo.app.desktop;
+
 import javafx.fxml.Initializable;
 
 import java.net.URL;

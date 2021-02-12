@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: #100C1C;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainWindowController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: #100C1C;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.duolingo.app.desktop.MainWindowController">
     <children>
         <Pane fx:id="menuPane" layoutY="40.0" prefHeight="680.0" prefWidth="250.0" style="-fx-background-color: #1D182F;">
             <children>
@@ -15,7 +15,7 @@
                     <children>
                         <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
                             <children>
-                        <Button mnemonicParsing="false" prefHeight="74.0" prefWidth="236.0" style="-fx-background-color: #100C1C;" text="MENU PRINCIPAL">
+                        <Button mnemonicParsing="false" prefHeight="74.0" prefWidth="236.0" style="-fx-background-color: #100C1C;" text="MENU PRINCIPAL" textFill="WHITE">
                            <font>
                               <Font name="Calibri Bold" size="20.0" />
                            </font>
@@ -27,7 +27,7 @@
                         </HBox>
                   <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="85.0" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="btnShowExercices" mnemonicParsing="false" onMouseClicked="#showExercices" prefHeight="74.0" prefWidth="236.0" style="-fx-background-color: #100C1C;" text="LISTA EJERCICIOS">
+                        <Button fx:id="btnShowExercices" mnemonicParsing="false" onMouseClicked="#showExercices" prefHeight="74.0" prefWidth="236.0" style="-fx-background-color: #100C1C;" text="LISTA EJERCICIOS" textFill="WHITE">
                            <font>
                               <Font name="Calibri Bold" size="20.0" />
                            </font>
@@ -39,7 +39,7 @@
                   </HBox>
                   <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="185.0" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="btnCreateExercices" mnemonicParsing="false" prefHeight="74.0" prefWidth="236.0" style="-fx-background-color: #100C1C;" text="CREAR EJERCICIO">
+                        <Button fx:id="btnCreateExercices" mnemonicParsing="false" prefHeight="74.0" prefWidth="236.0" style="-fx-background-color: #100C1C;" text="CREAR EJERCICIO" textFill="WHITE">
                            <font>
                               <Font name="Calibri Bold" size="20.0" />
                            </font>
@@ -110,7 +110,7 @@
                     </opaqueInsets></Label>
                 <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@res/iconApp.png" />
+                        <Image url="@../res/iconApp.png" />
                     </image>
                 </ImageView>
             </items>

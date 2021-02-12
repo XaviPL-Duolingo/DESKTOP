@@ -1,3 +1,4 @@
+package com.duolingo.app.desktop;
 
 import com.duolingo.app.interfaces.impl.*;
 import com.duolingo.app.model.*;

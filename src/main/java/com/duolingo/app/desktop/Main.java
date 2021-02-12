@@ -1,3 +1,5 @@
+package com.duolingo.app.desktop;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,11 +17,11 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-        URL url = new File("src/main/java/splashWindow.fxml").toURI().toURL();
+        URL url = new File("src/main/java/com/duolingo/app/desktop/windows/splashWindow.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
         Scene scene = new Scene(root);
         scene.setFill(Color.TRANSPARENT);
-        url = new File("src/main/java/res/iconApp.png").toURI().toURL();
+        url = new File("src/main/java/com/duolingo/app/desktop/res/iconApp.png").toURI().toURL();
         Image icon = new Image(String.valueOf(url));
         primaryStage.getIcons().add(icon);
         primaryStage.initStyle(StageStyle.UNDECORATED);
