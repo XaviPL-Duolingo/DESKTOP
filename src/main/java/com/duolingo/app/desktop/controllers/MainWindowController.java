@@ -34,7 +34,7 @@ public class MainWindowController implements Initializable {
 
     public static double x, y;
 
-    @FXML    private Pane layerBlack;
+    @FXML    private Pane mainPane, layerBlack;
     @FXML    private JFXToggleButton btnServer;
     @FXML    private ListView<Course> listCourses;
     @FXML    private ListView<Category> listCategories;
@@ -108,8 +108,6 @@ public class MainWindowController implements Initializable {
         int idOriginLang = cmbOriginLanguage.getValue().getIdLanguage();
         int idDestLang = cmbDestLanguage.getValue().getIdLanguage();
 
-        System.out.println(idOriginLang + "//" +  idDestLang);
-
         if (idOriginLang != idDestLang){
             applyFilter(idOriginLang, idDestLang);
         }else{
@@ -119,7 +117,6 @@ public class MainWindowController implements Initializable {
                 System.out.println("Filtro no válido...");
             }
         }
-
     }
 
     private void applyFilter(int idOriginLang, int idDestLang){
@@ -266,6 +263,13 @@ public class MainWindowController implements Initializable {
         }else {
             new ServerRMI().stopServer();
         }
+    }
+
+    public void restorePanel(){
+        System.out.println("patata");
+        layerBlack.setVisible(false);
+        layerBlack.setDisable(true);
+
     }
 
 }
