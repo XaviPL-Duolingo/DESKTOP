@@ -15,6 +15,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -23,7 +24,7 @@ public class AddExerciceWindowController implements Initializable {
 
     private TypeExerciceImpl typeExerciceManager = new TypeExerciceImpl();
 
-    @FXML    private Pane rootPane;
+    @FXML    private Pane rootPane, contentPane;
     @FXML    private FontAwesomeIcon btnClose;
     @FXML    private ComboBox<TypeExercice> cmbTypeExercice;
 
@@ -39,29 +40,40 @@ public class AddExerciceWindowController implements Initializable {
     }
 
     @FXML
-    void checkTypeExercice(ActionEvent event) {
+    void checkTypeExercice(ActionEvent event) throws MalformedURLException {
 
+        contentPane.getChildren().clear();
         int idTypeExercice = cmbTypeExercice.getSelectionModel().getSelectedItem().getIdTypeExercice();
         URL url = null;
         switch (idTypeExercice){
             case 1:
-
+                url = new File("src/main/java/com/duolingo/app/desktop/windows/typeExercices/translateOpenWindow.fxml").toURI().toURL();
                 break;
             case 2:
+                url = new File("src/main/java/com/duolingo/app/desktop/windows/typeExercices/translateSortWindow.fxml").toURI().toURL();
                 break;
             case 3:
+                url = new File("src/main/java/com/duolingo/app/desktop/windows/typeExercices/listenOpentWindow.fxml").toURI().toURL();
                 break;
             case 4:
+                url = new File("src/main/java/com/duolingo/app/desktop/windows/typeExercices/listenSortWindow.fxml").toURI().toURL();
                 break;
             case 5:
+                url = new File("src/main/java/com/duolingo/app/desktop/windows/typeExercices/wordMatchWindow.fxml").toURI().toURL();
                 break;
             case 6:
+                url = new File("src/main/java/com/duolingo/app/desktop/windows/typeExercices/wordFillWindow.fxml").toURI().toURL();
                 break;
             case 7:
+                url = new File("src/main/java/com/duolingo/app/desktop/windows/typeExercices/typeTestWindow.fxml").toURI().toURL();
                 break;
         }
-
-        System.out.println(url.toString());
+        try {
+            Pane tempPane = FXMLLoader.load(url);
+            contentPane.getChildren().add(tempPane);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
     @FXML
