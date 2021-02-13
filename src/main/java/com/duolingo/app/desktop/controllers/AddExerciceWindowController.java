@@ -1,5 +1,6 @@
 package com.duolingo.app.desktop.controllers;
 
+import com.duolingo.app.desktop.controllers.typeExercices.TypeTestWindowController;
 import com.duolingo.app.interfaces.impl.TypeExerciceImpl;
 import com.duolingo.app.model.TypeExercice;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
@@ -23,6 +24,7 @@ import java.util.ResourceBundle;
 public class AddExerciceWindowController implements Initializable {
 
     private TypeExerciceImpl typeExerciceManager = new TypeExerciceImpl();
+    private int idLevel;
 
     @FXML    private Pane rootPane, contentPane;
     @FXML    private FontAwesomeIcon btnClose;
@@ -40,14 +42,17 @@ public class AddExerciceWindowController implements Initializable {
     }
 
     @FXML
-    void checkTypeExercice(ActionEvent event) throws MalformedURLException {
+    void checkTypeExercice(ActionEvent event) throws IOException {
 
         contentPane.getChildren().clear();
         int idTypeExercice = cmbTypeExercice.getSelectionModel().getSelectedItem().getIdTypeExercice();
+
         URL url = null;
+        FXMLLoader loader = null;
         switch (idTypeExercice){
             case 1:
                 url = new File("src/main/java/com/duolingo/app/desktop/windows/typeExercices/translateOpenWindow.fxml").toURI().toURL();
+                loader = new FXMLLoader(url);
                 break;
             case 2:
                 url = new File("src/main/java/com/duolingo/app/desktop/windows/typeExercices/translateSortWindow.fxml").toURI().toURL();
@@ -66,16 +71,20 @@ public class AddExerciceWindowController implements Initializable {
                 break;
             case 7:
                 url = new File("src/main/java/com/duolingo/app/desktop/windows/typeExercices/typeTestWindow.fxml").toURI().toURL();
+                loader = new FXMLLoader(url);
+                Pane tempPane = loader.load();
+                TypeTestWindowController typeTestWindowController = loader.<TypeTestWindowController>getController();
+                typeTestWindowController.setIdLevel(idLevel);
+                typeTestWindowController.setIdTypeExercice(idTypeExercice);
+                contentPane.getChildren().add(tempPane);
                 break;
         }
-        try {
-            Pane tempPane = FXMLLoader.load(url);
-            contentPane.getChildren().add(tempPane);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
     }
+
+    public void setIdLevel(int idLevel){
+        this.idLevel = idLevel;
+    }
+
     @FXML
     void close(MouseEvent event){
         rootPane.getScene().getWindow().hide();

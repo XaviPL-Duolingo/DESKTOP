@@ -243,7 +243,12 @@ public class MainWindowController implements Initializable {
 
             int idLevel = listLevels.getSelectionModel().getSelectedItem().getIdLevel();
             URL url = new File("src/main/java/com/duolingo/app/desktop/windows/addExerciceWindow.fxml").toURI().toURL();
-            Parent root = FXMLLoader.load(url);
+            FXMLLoader loader = new FXMLLoader(url);
+            Parent root = loader.load();
+
+            AddExerciceWindowController addExerciceWindowController = loader.<AddExerciceWindowController>getController();
+            addExerciceWindowController.setIdLevel(idLevel);
+
             Scene scene = new Scene(root);
             url = new File("src/main/java/com/duolingo/app/desktop/res/addExerciceWindow.css").toURI().toURL();
             Stage stage = new Stage();
