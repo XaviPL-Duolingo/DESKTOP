@@ -42,8 +42,26 @@ public class AddExerciceWindowController implements Initializable {
     void checkTypeExercice(ActionEvent event) {
 
         int idTypeExercice = cmbTypeExercice.getSelectionModel().getSelectedItem().getIdTypeExercice();
-        System.out.println(idTypeExercice);
+        URL url = null;
+        switch (idTypeExercice){
+            case 1:
 
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+            case 7:
+                break;
+        }
+
+        System.out.println(url.toString());
 
     }
     @FXML
