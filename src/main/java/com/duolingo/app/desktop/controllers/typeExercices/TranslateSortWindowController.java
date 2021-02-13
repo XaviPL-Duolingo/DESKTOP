@@ -1,5 +1,7 @@
 package com.duolingo.app.desktop.controllers.typeExercices;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 import java.net.URL;
@@ -9,5 +11,9 @@ public class TranslateSortWindowController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+    }
+
+    @FXML
+    public void checkContent(ActionEvent actionEvent) {
     }
 }

@@ -52,16 +52,15 @@ public class AddExerciceWindowController implements Initializable {
         switch (idTypeExercice){
             case 1:
                 url = new File("src/main/java/com/duolingo/app/desktop/windows/typeExercices/translateOpenWindow.fxml").toURI().toURL();
-                loader = new FXMLLoader(url);
                 break;
             case 2:
                 url = new File("src/main/java/com/duolingo/app/desktop/windows/typeExercices/translateSortWindow.fxml").toURI().toURL();
                 break;
             case 3:
-                url = new File("src/main/java/com/duolingo/app/desktop/windows/typeExercices/listenOpentWindow.fxml").toURI().toURL();
+                url = new File("src/main/java/com/duolingo/app/desktop/windows/typeExercices/translateSortWindow.fxml").toURI().toURL();
                 break;
             case 4:
-                url = new File("src/main/java/com/duolingo/app/desktop/windows/typeExercices/listenSortWindow.fxml").toURI().toURL();
+                url = new File("src/main/java/com/duolingo/app/desktop/windows/typeExercices/translateOpenWindow.fxml").toURI().toURL();
                 break;
             case 5:
                 url = new File("src/main/java/com/duolingo/app/desktop/windows/typeExercices/wordMatchWindow.fxml").toURI().toURL();
@@ -71,14 +70,19 @@ public class AddExerciceWindowController implements Initializable {
                 break;
             case 7:
                 url = new File("src/main/java/com/duolingo/app/desktop/windows/typeExercices/typeTestWindow.fxml").toURI().toURL();
-                loader = new FXMLLoader(url);
+                /*loader = new FXMLLoader(url);
                 Pane tempPane = loader.load();
                 TypeTestWindowController typeTestWindowController = loader.<TypeTestWindowController>getController();
                 typeTestWindowController.setIdLevel(idLevel);
                 typeTestWindowController.setIdTypeExercice(idTypeExercice);
-                contentPane.getChildren().add(tempPane);
+                contentPane.getChildren().add(tempPane);*/
                 break;
         }
+
+        loader = new FXMLLoader(url);
+        Pane tempPane = loader.load();
+        contentPane.getChildren().add(tempPane);
+
     }
 
     public void setIdLevel(int idLevel){

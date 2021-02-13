@@ -13,6 +13,18 @@
     -fx-font-family: 'DIN Round';
 }
 
+.text-field{
+    -fx-background-color:  #100C1C;
+    -fx-background-radius: 30;
+    -fx-text-fill: #FFFFFF;
+}
+
+.list-view{
+    -fx-background-color:  #100C1C;
+    -fx-background-radius: 30;
+    -fx-text-fill: #FFFFFF;
+}
+
 .combo-box {
     -fx-background-radius:  30;
     -fx-background-color:  #1D182F;

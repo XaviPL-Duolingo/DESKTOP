@@ -1,3 +1,13 @@
+@font-face {
+    font-family: 'DIN Round';
+    src: url('DINRoundPro.ttf') format('ttf');
+}
+
+@font-face {
+    font-family: 'DIN Round Bold';
+    src: url('DINRoundPro-Bold.ttf') format('ttf');
+}
+
 .root {
     -fx-background-color: rgba(0, 0, 0, 0);
 }
@@ -29,4 +39,59 @@
 }
 .combo-box .arrow-button{
     -fx-padding: 0 15 0 0;
+}
+
+.text-field{
+    -fx-background-color:  #100C1C;
+    -fx-background-radius: 30;
+    -fx-text-fill: #FFFFFF;
+}
+
+.list-view{
+    -fx-background-color:  #100C1C;
+    -fx-background-radius: 30;
+    -fx-text-fill: #FFFFFF;
+}
+
+.list-cell:odd {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-padding: 10 10 10 10;
+    -fx-font-size: 12pt;
+
+}
+.list-cell:even {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-padding: 10 10 10 10;
+    -fx-font-size: 12pt ;
+
+}
+
+.scroll-bar:vertical{
+    -fx-background-color :transparent;
+    -fx-border-color :transparent;
+    -fx-background-radius : 0.0em;
+    -fx-border-radius :2.0em;
+    -fx-padding: 10 10 20 0;
+}
+
+.scroll-bar:vertical .thumb{
+    -fx-background-color :#FF00EE;
+
+}
+
+.jfx-toggle-button{
+    -jfx-disable-visual-focus: true;
+}
+
+.table-view{
+    -fx-background-color:  #100C1C;
+    -fx-background-radius: 30;
+    -fx-text-fill: #FFFFFF;
+}
+
+.table-view .column-header {
+    -fx-background-color:  #100C1C;
+    -fx-text-fill: #FFFFFF;
 }
