@@ -1,6 +1,7 @@
 package com.duolingo.app.desktop.controllers.typeExercices;
 
 import com.duolingo.app.interfaces.impl.ExerciceImpl;
+import com.jfoenix.controls.JFXToggleButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -19,9 +20,8 @@ public class TypeTestWindowController implements Initializable {
 
     @FXML    private TextField txtQuestion;
     @FXML    private Button btnCreateExercice;
-    @FXML    private TextField txtAnswer;
-    @FXML    private TextField txtWrongAnswer1;
-    @FXML    private TextField txtWrongAnswer2;
+    @FXML    private TextField txtAnswer, txtWrongAnswer1, txtWrongAnswer2;
+    @FXML    private JFXToggleButton btnIsHard;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -30,8 +30,6 @@ public class TypeTestWindowController implements Initializable {
 
     @FXML
     void checkContent(ActionEvent event) {
-
-        System.out.println("level: "+idLevel + " // type: " + idTypeExercice);
 
         String question = txtQuestion.getText();
         String answer = txtAnswer.getText();
@@ -59,21 +57,33 @@ public class TypeTestWindowController implements Initializable {
 
     private void createExercice(String question, String answer, String wrongAnswer1, String wrongAnswer2){
 
-        idLevel = 1;
-        idTypeExercice = 1;
         String[] contentExercice = new String[]{question, answer, wrongAnswer1, wrongAnswer2};
+        boolean isHard = btnIsHard.isSelected();
 
-        exerciceManager.createExercice(idLevel, idTypeExercice, contentExercice);
+        try{
+            exerciceManager.insertTypeTestExercice(idLevel, contentExercice, isHard);
+            System.out.println("[DEBUG] - Ejercicio TIPO TEST creado correctamente!p");
+            clear();
+        }catch (Exception e){
+            System.out.println("[DEBUG] - Error al crear ejercicio TIPO TEST");
+        }
+
+
+    }
+
+    private void clear(){
+
+        txtAnswer.clear();
+        txtQuestion.clear();
+        txtWrongAnswer1.clear();
+        txtWrongAnswer2.clear();
+        btnIsHard.setSelected(false);
+
 
     }
 
     public void setIdLevel(int idLevel){
         this.idLevel = idLevel;
     }
-
-    public void setIdTypeExercice(int idTypeExercice){
-        this.idTypeExercice = idTypeExercice;
-    }
-
 
 }

@@ -1,6 +1,6 @@
 package com.duolingo.app.desktop.controllers;
 
-import com.duolingo.app.desktop.controllers.typeExercices.TypeTestWindowController;
+import com.duolingo.app.desktop.controllers.typeExercices.*;
 import com.duolingo.app.interfaces.impl.TypeExerciceImpl;
 import com.duolingo.app.model.TypeExercice;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
@@ -48,40 +48,70 @@ public class AddExerciceWindowController implements Initializable {
 
         URL url = null;
         FXMLLoader loader = null;
+        Pane tempPane;
+
         switch (idTypeExercice){
             case 1:
                 url = new File("src/main/java/com/duolingo/app/desktop/windows/typeExercices/translateOpenWindow.fxml").toURI().toURL();
+                loader = new FXMLLoader(url);
+                tempPane = loader.load();
+                contentPane.getChildren().add(tempPane);
+                TranslateOpenWindowController translateOpenWindowController = loader.<TranslateOpenWindowController>getController();
+                translateOpenWindowController.setIdLevel(idLevel);
+                translateOpenWindowController.setListen(false);
                 break;
             case 2:
                 url = new File("src/main/java/com/duolingo/app/desktop/windows/typeExercices/translateSortWindow.fxml").toURI().toURL();
+                loader = new FXMLLoader(url);
+                tempPane = loader.load();
+                contentPane.getChildren().add(tempPane);
+                TranslateSortWindowController translateSortWindowController = loader.<TranslateSortWindowController>getController();
+                translateSortWindowController.setIdLevel(idLevel);
+                translateSortWindowController.setListen(false);
                 break;
             case 3:
                 url = new File("src/main/java/com/duolingo/app/desktop/windows/typeExercices/translateSortWindow.fxml").toURI().toURL();
+                loader = new FXMLLoader(url);
+                tempPane = loader.load();
+                contentPane.getChildren().add(tempPane);
+                TranslateSortWindowController translateSortWindowController2 = loader.<TranslateSortWindowController>getController();
+                translateSortWindowController2.setIdLevel(idLevel);
+                translateSortWindowController2.setListen(true);
                 break;
             case 4:
                 url = new File("src/main/java/com/duolingo/app/desktop/windows/typeExercices/translateOpenWindow.fxml").toURI().toURL();
+                loader = new FXMLLoader(url);
+                tempPane = loader.load();
+                contentPane.getChildren().add(tempPane);
+                TranslateOpenWindowController translateOpenWindowController2 = loader.<TranslateOpenWindowController>getController();
+                translateOpenWindowController2.setIdLevel(idLevel);
+                translateOpenWindowController2.setListen(true);
                 break;
             case 5:
                 url = new File("src/main/java/com/duolingo/app/desktop/windows/typeExercices/wordMatchWindow.fxml").toURI().toURL();
+                loader = new FXMLLoader(url);
+                tempPane = loader.load();
+                contentPane.getChildren().add(tempPane);
+                WordMatchWindowController wordMatchWindowController = loader.<WordMatchWindowController>getController();
+                wordMatchWindowController.setIdLevel(idLevel);
                 break;
             case 6:
                 url = new File("src/main/java/com/duolingo/app/desktop/windows/typeExercices/wordFillWindow.fxml").toURI().toURL();
+                loader = new FXMLLoader(url);
+                tempPane = loader.load();
+                contentPane.getChildren().add(tempPane);
+                WordFillWindowController wordFillWindowController = loader.<WordFillWindowController>getController();
+                wordFillWindowController.setIdLevel(idLevel);
                 break;
             case 7:
                 url = new File("src/main/java/com/duolingo/app/desktop/windows/typeExercices/typeTestWindow.fxml").toURI().toURL();
-                /*loader = new FXMLLoader(url);
-                Pane tempPane = loader.load();
+                loader = new FXMLLoader(url);
+                tempPane = loader.load();
+                contentPane.getChildren().add(tempPane);
                 TypeTestWindowController typeTestWindowController = loader.<TypeTestWindowController>getController();
                 typeTestWindowController.setIdLevel(idLevel);
-                typeTestWindowController.setIdTypeExercice(idTypeExercice);
-                contentPane.getChildren().add(tempPane);*/
                 break;
         }
-
-        loader = new FXMLLoader(url);
-        Pane tempPane = loader.load();
-        contentPane.getChildren().add(tempPane);
-
     }
 
     public void setIdLevel(int idLevel){
