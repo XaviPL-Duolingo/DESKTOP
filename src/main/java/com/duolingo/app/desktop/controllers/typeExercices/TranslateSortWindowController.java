@@ -49,7 +49,7 @@ public class TranslateSortWindowController implements Initializable {
         boolean isHard = btnIsHard.isSelected();
         try {
             exerciceManager.insertTranslateExercice(idLevel, contentExercice, isHard, isListen);
-            System.out.println("[DEBUG] - Ejercicio TRANSLATE SORT creado correctamente!p");
+            System.out.println("[DEBUG] - Ejercicio TRANSLATE SORT creado correctamente!");
             clear();
         }catch (Exception e){
             System.out.println("[DEBUG] - Error al crear ejercicio TRANSLATE SORT");

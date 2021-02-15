@@ -163,7 +163,7 @@
                     <children>
                         <FontAwesomeIcon fill="#d3d3d3" glyphName="CIRCLE" onMouseClicked="#close" size="1.2em" textAlignment="CENTER" wrappingWidth="21.285714149475098" />
                         <FontAwesomeIcon fill="#9e9a9a" glyphName="CIRCLE" size="1.2em" textAlignment="CENTER" wrappingWidth="21.285714149475098" />
-                        <FontAwesomeIcon fill="#d3d3d3" glyphName="CIRCLE" onMouseClicked="#minimize" size="1.2em" textAlignment="CENTER" wrappingWidth="21.285714149475098" />
+                        <FontAwesomeIcon fill="#d3d3d3" glyphName="CIRCLE" onMouseClicked="#minimize" size="1.2em" text="" textAlignment="CENTER" wrappingWidth="21.285714149475098" />
                     </children>
                 </HBox>
                 <Label text="BUHOLINGO | DESKTOP" textFill="WHITE">

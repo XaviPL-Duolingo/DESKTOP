@@ -26,7 +26,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Button fx:id="btnRemoveAnswer" layoutX="215.0" layoutY="41.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="175.0" style="-fx-background-radius: 30; -fx-background-color: linear-gradient(to top right, #FF00EE, #6E00FF); -fx-text-fill: WHITE;" text="ELIMINAR">
+      <Button fx:id="btnRemoveAnswer" layoutX="215.0" layoutY="41.0" mnemonicParsing="false" onAction="#removeAnswer" prefHeight="50.0" prefWidth="175.0" style="-fx-background-radius: 30; -fx-background-color: linear-gradient(to top right, #FF00EE, #6E00FF); -fx-text-fill: WHITE;" text="ELIMINAR">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>

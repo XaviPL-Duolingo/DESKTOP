@@ -4,8 +4,6 @@ import com.duolingo.app.interfaces.impl.*;
 import com.duolingo.app.model.*;
 import com.duolingo.app.util.ServerRMI;
 import com.jfoenix.controls.JFXToggleButton;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -16,16 +14,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+
 import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -189,7 +186,7 @@ public class MainWindowController implements Initializable {
     void createCategory(MouseEvent event){
 
         int idCourse = listCourses.getSelectionModel().getSelectedItem().getIdCourse();
-        String nameCourse = JOptionPane.showInputDialog("Nombre de la categoría?");
+        String nameCourse = JOptionPane.showInputDialog("¿Nombre de la categoria?");
         categoryManager.insertCategory(idCourse, nameCourse);
         checkCategories(event);
 
@@ -252,7 +249,6 @@ public class MainWindowController implements Initializable {
             Scene scene = new Scene(root);
             url = new File("src/main/java/com/duolingo/app/desktop/res/addExerciceWindow.css").toURI().toURL();
             Stage stage = new Stage();
-            // stage.setOpacity(0.5);
             stage.setX(event.getScreenX()-event.getSceneX());
             stage.setY(event.getScreenY()-event.getSceneY());
             stage.setTitle("Buholingo | LISTA EJERCICIOS");
@@ -281,6 +277,37 @@ public class MainWindowController implements Initializable {
         }else {
             new ServerRMI().stopServer();
         }
+    }
+
+    public static String popUpWindow(String context, MouseEvent event){
+
+
+        try {
+            URL url = new File("src/main/java/com/duolingo/app/desktop/windows/popUpWindow.fxml").toURI().toURL();
+            FXMLLoader loader = new FXMLLoader(url);
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+
+            PopUpWindowController popUpWindowController = loader.<PopUpWindowController>getController();
+            popUpWindowController.setContext(context);
+
+            stage.setX(event.getScreenX()-event.getSceneX()+400);
+            stage.setY(event.getScreenY()-event.getSceneY()+220);
+            stage.setTitle("Buholingo | DIALOGO");
+            stage.initStyle(StageStyle.TRANSPARENT);
+            scene.setFill(Color.TRANSPARENT);
+
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+
     }
 
 }
