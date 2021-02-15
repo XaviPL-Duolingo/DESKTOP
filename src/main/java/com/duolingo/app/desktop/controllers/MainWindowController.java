@@ -267,7 +267,33 @@ public class MainWindowController implements Initializable {
 
     @FXML
     void showExercice(MouseEvent event){
+        try {
 
+            int idLevel = listLevels.getSelectionModel().getSelectedItem().getIdLevel();
+            URL url = new File("src/main/java/com/duolingo/app/desktop/windows/viewExerciceWindow.fxml").toURI().toURL();
+            FXMLLoader loader = new FXMLLoader(url);
+            Parent root = loader.load();
+
+            ViewExerciceWindowController viewExerciceWindowController = loader.<ViewExerciceWindowController>getController();
+            viewExerciceWindowController.listExercices(idLevel);
+
+            Scene scene = new Scene(root);
+            url = new File("src/main/java/com/duolingo/app/desktop/res/addExerciceWindow.css").toURI().toURL();
+            Stage stage = new Stage();
+            stage.setX(event.getScreenX()-event.getSceneX());
+            stage.setY(event.getScreenY()-event.getSceneY());
+            stage.setTitle("Buholingo | VER EJERCICIOS");
+
+            stage.initStyle(StageStyle.TRANSPARENT);
+            scene.setFill(Color.TRANSPARENT);
+            scene.getStylesheets().add(String.valueOf(url));
+
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
