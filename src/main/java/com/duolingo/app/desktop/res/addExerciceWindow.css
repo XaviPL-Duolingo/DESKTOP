@@ -87,7 +87,35 @@
 
 .table-view{
     -fx-background-color:  #100C1C;
-    -fx-background-radius: 30;
+    -fx-background-radius: 0 0 30 30;
+    -fx-text-fill: #FFFFFF;
+}
+
+.table-row-cell:empty, .table-cell:empty:hover {
+    -fx-background-color: transparent;
+}
+
+.table-row-cell:odd{
+    -fx-background-color: transparent;
+    -fx-text-fill: #FFFFFF;
+}
+
+.table-row-cell:even{
+    -fx-background-color: transparent;
+    -fx-text-fill: #FFFFFF;
+}
+
+.table-view:row-selection .table-row-cell:filled:hover {
+    -fx-background-color: #FF00EE;
+    -fx-text-fill: #FFFFFF;
+}
+
+.table-cell:hover {
+    -fx-background-color: #FF00EE;
+}
+
+.table-view:row-selection .table-row-cell:filled:selected {
+    -fx-background-color: #FF00EE;
     -fx-text-fill: #FFFFFF;
 }
 
