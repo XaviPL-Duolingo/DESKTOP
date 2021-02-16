@@ -1,6 +1,7 @@
 package com.duolingo.app.desktop.controllers.typeExercices;
 
 import com.duolingo.app.interfaces.impl.ExerciceImpl;
+import com.duolingo.app.model.WordMatch;
 import com.jfoenix.controls.JFXToggleButton;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -28,34 +29,6 @@ public class WordMatchWindowController implements Initializable {
     @FXML    private TableView<WordMatch> tableWords;
     @FXML    private TableColumn<String, String> columnWord;
     @FXML    private TableColumn<String, String> columnMatch;
-
-    public static class WordMatch {
-
-        private String word;
-        private String match;
-
-        public WordMatch(String word, String match) {
-            this.word = word;
-            this.match = match;
-        }
-
-        public String getWord() {
-            return word;
-        }
-
-        public void setWord(String word) {
-            this.word = word;
-        }
-
-        public String getMatch() {
-            return match;
-        }
-
-        public void setMatch(String match) {
-            this.match = match;
-        }
-    }
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -100,7 +73,7 @@ public class WordMatchWindowController implements Initializable {
         if (!tableWords.getItems().isEmpty()){
             createExercice();
         }else {
-            System.out.println("`DEBUG] - No hay suficientes MATCH WORDS añadidas...");
+            System.out.println("[DEBUG] - No hay suficientes MATCH WORDS añadidas...");
         }
 
     }
@@ -108,10 +81,9 @@ public class WordMatchWindowController implements Initializable {
     private void createExercice(){
 
         ObservableList<WordMatch> wordMatchesList = tableWords.getItems();
-        String[] contentExercice = wordMatchesList.toArray(new String[wordMatchesList.size()]);
+        WordMatch[] contentExercice = wordMatchesList.toArray(new WordMatch[0]);
         boolean isHard = btnIsHard.isSelected();
-
-        // exerciceManager.insertWordMatchExercice(idLevel, contentExercice, isHard);
+        exerciceManager.insertWordMatchExercice(idLevel, contentExercice, isHard);
 
     }
 
