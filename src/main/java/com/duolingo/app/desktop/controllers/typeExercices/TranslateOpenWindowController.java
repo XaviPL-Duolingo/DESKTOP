@@ -1,12 +1,15 @@
 package com.duolingo.app.desktop.controllers.typeExercices;
 
 import com.duolingo.app.interfaces.impl.ExerciceImpl;
+import com.duolingo.app.model.Exercice;
 import com.jfoenix.controls.JFXToggleButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import org.json.JSONObject;
 
 import javax.swing.*;
 import java.net.URL;
@@ -21,6 +24,7 @@ public class TranslateOpenWindowController implements Initializable {
 
     @FXML    private TextField txtQuestion;
     @FXML    private JFXToggleButton btnIsHard;
+    @FXML    private Button btnCreateExercice, btnAddAnswer, btnRemoveAnswer;
     @FXML    private ListView<String> listAnswers;
 
     @Override
@@ -30,6 +34,31 @@ public class TranslateOpenWindowController implements Initializable {
 
     public void setIdLevel(int idLevel){
         this.idLevel = idLevel;
+    }
+
+    public void showData(int idExercice){
+
+        Exercice exerciceObj = exerciceManager.getExerciceByID(idExercice);
+        JSONObject objectJSON = new JSONObject(exerciceObj.getContentExercice());
+
+        txtQuestion.setText((String) objectJSON.get("phrToTranslate"));
+        btnIsHard.setSelected(exerciceObj.isHard());
+
+        try {
+            int i = 1;
+            for (i = 1; i < 100; i++){
+                listAnswers.getItems().add((String) objectJSON.get("answer"+ i));
+            }
+        }catch (Exception e){
+            System.out.println("[DEBUG] - Bucle FOR [answerX] terminado!");
+        }
+
+        btnIsHard.setDisable(true);
+        listAnswers.setDisable(true);
+        btnCreateExercice.setDisable(true);
+        btnAddAnswer.setDisable(true);
+        btnRemoveAnswer.setDisable(true);
+        txtQuestion.setDisable(true);
     }
 
     @FXML

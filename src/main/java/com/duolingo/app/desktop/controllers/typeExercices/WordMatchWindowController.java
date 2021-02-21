@@ -1,6 +1,7 @@
 package com.duolingo.app.desktop.controllers.typeExercices;
 
 import com.duolingo.app.interfaces.impl.ExerciceImpl;
+import com.duolingo.app.model.Exercice;
 import com.duolingo.app.model.WordMatch;
 import com.jfoenix.controls.JFXToggleButton;
 import javafx.collections.ObservableList;
@@ -11,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import org.json.JSONObject;
 
 import javax.swing.*;
 import java.net.URL;
@@ -83,7 +85,13 @@ public class WordMatchWindowController implements Initializable {
         ObservableList<WordMatch> wordMatchesList = tableWords.getItems();
         WordMatch[] contentExercice = wordMatchesList.toArray(new WordMatch[0]);
         boolean isHard = btnIsHard.isSelected();
-        exerciceManager.insertWordMatchExercice(idLevel, contentExercice, isHard);
+        try {
+            exerciceManager.insertWordMatchExercice(idLevel, contentExercice, isHard);
+            System.out.println("[DEBUG] - Ejercicio WORD MATCH creado correctamente!p");
+            clear();
+        }catch (Exception e){
+            System.out.println("[DEBUG] - Error al crear ejercicio WORD MATCH");
+        }
 
     }
 
@@ -95,6 +103,16 @@ public class WordMatchWindowController implements Initializable {
 
     public void setIdLevel(int idLevel) {
         this.idLevel = idLevel;
+    }
+
+    public void showData(int idExercice){
+
+        Exercice exerciceObj = exerciceManager.getExerciceByID(idExercice);
+        JSONObject objectJSON = new JSONObject(exerciceObj.getContentExercice());
+
+
+        btnIsHard.setSelected(exerciceObj.isHard());
+
     }
 
 }

@@ -299,7 +299,7 @@ public class MainWindowController implements Initializable {
     @FXML
     void serverStatus(){
         if (btnServer.isSelected()){
-            new ServerRMI();
+            new ServerRMI().startServer();
         }else {
             new ServerRMI().stopServer();
         }

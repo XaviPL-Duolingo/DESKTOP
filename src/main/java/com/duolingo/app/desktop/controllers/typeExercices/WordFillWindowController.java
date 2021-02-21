@@ -1,12 +1,14 @@
 package com.duolingo.app.desktop.controllers.typeExercices;
 
 import com.duolingo.app.interfaces.impl.ExerciceImpl;
+import com.duolingo.app.model.Exercice;
 import com.jfoenix.controls.JFXToggleButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import org.json.JSONObject;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -14,7 +16,7 @@ import java.util.ResourceBundle;
 public class WordFillWindowController implements Initializable {
 
     private ExerciceImpl exerciceManager = new ExerciceImpl();
-    private int idLevel, idTypeExercice;
+    private int idLevel;
 
     @FXML    private TextField txtQuestion;
     @FXML    private Button btnCreateExercice;
@@ -68,8 +70,6 @@ public class WordFillWindowController implements Initializable {
         }catch (Exception e){
             System.out.println("[DEBUG] - Error al crear ejercicio WORD FILL");
         }
-
-
     }
 
     private void clear(){
@@ -83,8 +83,27 @@ public class WordFillWindowController implements Initializable {
 
     }
 
+    public void showData(int idExercice){
+
+        Exercice exerciceObj = exerciceManager.getExerciceByID(idExercice);
+        JSONObject objectJSON = new JSONObject(exerciceObj.getContentExercice());
+
+        txtQuestion.setText((String) objectJSON.get("phrToComplete"));
+        txtAnswer.setText((String) objectJSON.get("correctAnswer"));
+        txtWrongAnswer1.setText((String) objectJSON.get("wrongAnswer1"));
+        txtWrongAnswer2.setText((String) objectJSON.get("wrongAnswer2"));
+        btnIsHard.setSelected(exerciceObj.isHard());
+
+        txtQuestion.setDisable(true);
+        txtAnswer.setDisable(true);
+        txtWrongAnswer1.setDisable(true);
+        txtWrongAnswer2.setDisable(true);
+        btnIsHard.setDisable(true);
+        btnCreateExercice.setDisable(true);
+
+    }
+
     public void setIdLevel(int idLevel){
         this.idLevel = idLevel;
     }
-
 }

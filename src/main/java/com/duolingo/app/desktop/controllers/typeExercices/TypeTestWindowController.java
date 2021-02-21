@@ -1,6 +1,7 @@
 package com.duolingo.app.desktop.controllers.typeExercices;
 
 import com.duolingo.app.interfaces.impl.ExerciceImpl;
+import com.duolingo.app.model.Exercice;
 import com.jfoenix.controls.JFXToggleButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import org.json.JSONObject;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -16,7 +18,7 @@ import java.util.ResourceBundle;
 public class TypeTestWindowController implements Initializable {
 
     private ExerciceImpl exerciceManager = new ExerciceImpl();
-    private int idLevel, idTypeExercice;
+    private int idLevel;
 
     @FXML    private TextField txtQuestion;
     @FXML    private Button btnCreateExercice;
@@ -84,6 +86,26 @@ public class TypeTestWindowController implements Initializable {
 
     public void setIdLevel(int idLevel){
         this.idLevel = idLevel;
+    }
+
+    public void showData(int idExercice){
+
+        Exercice exerciceObj = exerciceManager.getExerciceByID(idExercice);
+        JSONObject objectJSON = new JSONObject(exerciceObj.getContentExercice());
+
+        txtQuestion.setText((String) objectJSON.get("phrToTranslate"));
+        txtAnswer.setText((String) objectJSON.get("correctAnswer"));
+        txtWrongAnswer1.setText((String) objectJSON.get("wrongAnswer1"));
+        txtWrongAnswer2.setText((String) objectJSON.get("wrongAnswer2"));
+        btnIsHard.setSelected(exerciceObj.isHard());
+
+        txtQuestion.setDisable(true);
+        txtAnswer.setDisable(true);
+        txtWrongAnswer1.setDisable(true);
+        txtWrongAnswer2.setDisable(true);
+        btnIsHard.setDisable(true);
+        btnCreateExercice.setDisable(true);
+
     }
 
 }

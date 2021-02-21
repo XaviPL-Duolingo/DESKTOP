@@ -58,6 +58,7 @@ public class ViewExerciceWindowController implements Initializable {
 
         contentPane.getChildren().clear();
         int idTypeExercice = exerciceObj.getIdTypeExercice().getIdTypeExercice();
+        int idExercice = exerciceObj.getIdExercice();
 
         URL url = null;
         FXMLLoader loader = null;
@@ -71,6 +72,7 @@ public class ViewExerciceWindowController implements Initializable {
                 contentPane.getChildren().add(tempPane);
                 TranslateOpenWindowController translateOpenWindowController = loader.<TranslateOpenWindowController>getController();
                 translateOpenWindowController.setListen(false);
+                translateOpenWindowController.showData(idExercice);
                 break;
             case 2:
                 url = new File("src/main/java/com/duolingo/app/desktop/windows/typeExercices/translateSortWindow.fxml").toURI().toURL();
@@ -79,6 +81,7 @@ public class ViewExerciceWindowController implements Initializable {
                 contentPane.getChildren().add(tempPane);
                 TranslateSortWindowController translateSortWindowController = loader.<TranslateSortWindowController>getController();
                 translateSortWindowController.setListen(false);
+                translateSortWindowController.showData(idExercice);
                 break;
             case 3:
                 url = new File("src/main/java/com/duolingo/app/desktop/windows/typeExercices/translateSortWindow.fxml").toURI().toURL();
@@ -87,6 +90,7 @@ public class ViewExerciceWindowController implements Initializable {
                 contentPane.getChildren().add(tempPane);
                 TranslateSortWindowController translateSortWindowController2 = loader.<TranslateSortWindowController>getController();
                 translateSortWindowController2.setListen(true);
+                translateSortWindowController2.showData(idExercice);
                 break;
             case 4:
                 url = new File("src/main/java/com/duolingo/app/desktop/windows/typeExercices/translateOpenWindow.fxml").toURI().toURL();
@@ -95,6 +99,7 @@ public class ViewExerciceWindowController implements Initializable {
                 contentPane.getChildren().add(tempPane);
                 TranslateOpenWindowController translateOpenWindowController2 = loader.<TranslateOpenWindowController>getController();
                 translateOpenWindowController2.setListen(true);
+                translateOpenWindowController2.showData(idExercice);
                 break;
             case 5:
                 url = new File("src/main/java/com/duolingo/app/desktop/windows/typeExercices/wordMatchWindow.fxml").toURI().toURL();
@@ -102,6 +107,7 @@ public class ViewExerciceWindowController implements Initializable {
                 tempPane = loader.load();
                 contentPane.getChildren().add(tempPane);
                 WordMatchWindowController wordMatchWindowController = loader.<WordMatchWindowController>getController();
+                wordMatchWindowController.showData(idExercice);
                 break;
             case 6:
                 url = new File("src/main/java/com/duolingo/app/desktop/windows/typeExercices/wordFillWindow.fxml").toURI().toURL();
@@ -109,6 +115,7 @@ public class ViewExerciceWindowController implements Initializable {
                 tempPane = loader.load();
                 contentPane.getChildren().add(tempPane);
                 WordFillWindowController wordFillWindowController = loader.<WordFillWindowController>getController();
+                wordFillWindowController.showData(idExercice);
                 break;
             case 7:
                 url = new File("src/main/java/com/duolingo/app/desktop/windows/typeExercices/typeTestWindow.fxml").toURI().toURL();
@@ -116,6 +123,7 @@ public class ViewExerciceWindowController implements Initializable {
                 tempPane = loader.load();
                 contentPane.getChildren().add(tempPane);
                 TypeTestWindowController typeTestWindowController = loader.<TypeTestWindowController>getController();
+                typeTestWindowController.showData(idExercice);
                 break;
         }
     }

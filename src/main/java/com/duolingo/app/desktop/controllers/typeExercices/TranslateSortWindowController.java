@@ -1,11 +1,14 @@
 package com.duolingo.app.desktop.controllers.typeExercices;
 
 import com.duolingo.app.interfaces.impl.ExerciceImpl;
+import com.duolingo.app.model.Exercice;
 import com.jfoenix.controls.JFXToggleButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import org.json.JSONObject;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -18,6 +21,7 @@ public class TranslateSortWindowController implements Initializable {
 
     @FXML    private TextField txtQuestion, txtAnswer;
     @FXML    private JFXToggleButton btnIsHard;
+    @FXML    private Button btnCreateExercice;
 
 
     @Override
@@ -67,6 +71,22 @@ public class TranslateSortWindowController implements Initializable {
 
     public void setIdLevel(int idLevel){
         this.idLevel = idLevel;
+    }
+
+    public void showData(int idExercice){
+
+        Exercice exerciceObj = exerciceManager.getExerciceByID(idExercice);
+        JSONObject objectJSON = new JSONObject(exerciceObj.getContentExercice());
+
+        txtQuestion.setText((String) objectJSON.get("phrToTranslate"));
+        txtAnswer.setText((String) objectJSON.get("answer1"));
+        btnIsHard.setSelected(exerciceObj.isHard());
+
+        txtQuestion.setDisable(true);
+        txtAnswer.setDisable(true);
+        btnIsHard.setDisable(true);
+        btnCreateExercice.setDisable(true);
+
     }
 
     public void setListen(boolean listen) {
