@@ -52,6 +52,9 @@
     -fx-background-radius: 30;
     -fx-text-fill: #FFFFFF;
 }
+.button{
+    -fx-background-radius: 30;
+}
 
 .list-cell:odd {
     -fx-background-color: transparent;

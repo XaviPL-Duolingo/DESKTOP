@@ -297,6 +297,33 @@ public class MainWindowController implements Initializable {
     }
 
     @FXML
+    void showItems(MouseEvent event){
+        try {
+
+            URL url = new File("src/main/java/com/duolingo/app/desktop/windows/itemsWindow.fxml").toURI().toURL();
+            FXMLLoader loader = new FXMLLoader(url);
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root);
+            url = new File("src/main/java/com/duolingo/app/desktop/res/addExerciceWindow.css").toURI().toURL();
+            Stage stage = new Stage();
+            stage.setX(event.getScreenX()-event.getSceneX());
+            stage.setY(event.getScreenY()-event.getSceneY());
+            stage.setTitle("Buholingo | ITEMS Y STORE");
+
+            stage.initStyle(StageStyle.TRANSPARENT);
+            scene.setFill(Color.TRANSPARENT);
+            scene.getStylesheets().add(String.valueOf(url));
+
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
     void serverStatus(){
         if (btnServer.isSelected()){
             new ServerRMI().startServer();

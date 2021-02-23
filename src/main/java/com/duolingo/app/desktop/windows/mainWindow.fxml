@@ -27,12 +27,12 @@
                     <children>
                         <HBox alignment="CENTER" prefHeight="75.0" prefWidth="200.0">
                             <children>
-                        <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="25.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="225.0" style="-fx-background-color: #100C1C; -fx-background-radius: 30;" text="DASHBOARD" textAlignment="RIGHT" textFill="WHITE">
+                        <Button fx:id="btnShowItems" alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="25.0" mnemonicParsing="false" onMouseClicked="#showItems" prefHeight="50.0" prefWidth="225.0" style="-fx-background-color: #100C1C; -fx-background-radius: 30;" text="ITEMS Y STORE" textAlignment="RIGHT" textFill="WHITE">
                            <font>
                               <Font name="DINRoundPro-Bold" size="15.0" />
                            </font>
                            <graphic>
-                                      <FontAwesomeIcon fill="WHITE" glyphName="DASHBOARD" selectionEnd="1" selectionStart="1" size="2em" wrappingWidth="43.0" />
+                                      <FontAwesomeIcon fill="WHITE" glyphName="CIRCLE" selectionEnd="1" selectionStart="1" size="2em" wrappingWidth="43.0" />
                            </graphic>
                         </Button>
                             </children>
