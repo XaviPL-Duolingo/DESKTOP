@@ -1,5 +1,7 @@
 package com.duolingo.app.util;
 
+import com.duolingo.app.interfaces.impl.CourseImpl;
+import com.duolingo.app.model.Course;
 import net.sf.lipermi.exception.LipeRMIException;
 import net.sf.lipermi.handler.CallHandler;
 import net.sf.lipermi.net.IServerListener;
@@ -8,6 +10,7 @@ import net.sf.lipermi.net.Server;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ServerRMI implements IServerRMI{
 
@@ -50,11 +53,19 @@ public class ServerRMI implements IServerRMI{
     }
 
     @Override
-    public ArrayList<String> getResponse(short originLang) {
+    public List<Course> getAllCoursesByID(int idOriginLang) {
 
-        ArrayList<String> arrayCourses = new ArrayList<>();
-        arrayCourses.add("Hola!");
-        System.out.println("SUCCESS - [getResponse()]");
-        return arrayCourses;
+        List<Course> listCourses = null;
+
+        try {
+            CourseImpl courseManager = new CourseImpl();
+            listCourses = courseManager.getAllCoursesByID(idOriginLang, 0);
+            System.out.println("SUCCESS - [getResponse()]");
+        }catch (Exception e){
+            System.out.println("[SERVER] - ERROR: getAllCoursesByID()");
+        }
+        return listCourses;
+
+
     }
 }

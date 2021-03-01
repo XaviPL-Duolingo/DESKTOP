@@ -2,7 +2,6 @@ package com.duolingo.app.desktop.controllers;
 
 import com.duolingo.app.interfaces.impl.ItemImpl;
 import com.duolingo.app.model.Item;
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
