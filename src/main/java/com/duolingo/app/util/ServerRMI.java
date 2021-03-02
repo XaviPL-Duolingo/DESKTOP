@@ -1,7 +1,11 @@
 package com.duolingo.app.util;
 
+import com.duolingo.app.interfaces.impl.CategoryImpl;
 import com.duolingo.app.interfaces.impl.CourseImpl;
+import com.duolingo.app.interfaces.impl.LanguageImpl;
+import com.duolingo.app.model.Category;
 import com.duolingo.app.model.Course;
+import com.duolingo.app.model.Language;
 import net.sf.lipermi.exception.LipeRMIException;
 import net.sf.lipermi.handler.CallHandler;
 import net.sf.lipermi.net.IServerListener;
@@ -60,12 +64,45 @@ public class ServerRMI implements IServerRMI{
         try {
             CourseImpl courseManager = new CourseImpl();
             listCourses = courseManager.getAllCoursesByID(idOriginLang, 0);
-            System.out.println("SUCCESS - [getResponse()]");
+            System.out.println("[SERVER] - SUCCESS: getAllCoursesByID()");
         }catch (Exception e){
             System.out.println("[SERVER] - ERROR: getAllCoursesByID()");
         }
         return listCourses;
 
 
+    }
+
+    @Override
+    public List<Language> getAllLanguages() {
+
+        List<Language> listLanguages = null;
+
+        try {
+            LanguageImpl languageManager = new LanguageImpl();
+            listLanguages = languageManager.getAllLanguages();
+            System.out.println("[SERVER] - SUCCESS: getAllLanguages()");
+        }catch (Exception e){
+            System.out.println("[SERVER] - ERROR: getAllLanguages()");
+        }
+
+        return listLanguages;
+    }
+
+    @Override
+    public List<Category> getAllCategoriesByID(int idCourse) {
+
+        System.out.println("course: " + idCourse);
+        List<Category> listCategories = null;
+
+        try {
+            CategoryImpl categoryManager = new CategoryImpl();
+            listCategories = categoryManager.getAllCategoriesByID(idCourse);
+            System.out.println("[SERVER] - SUCCESS: getAllCategoriesByID()");
+        }catch (Exception e){
+            System.out.println("[SERVER] - ERROR: getAllCategoriesByID()");
+        }
+
+        return listCategories;
     }
 }
