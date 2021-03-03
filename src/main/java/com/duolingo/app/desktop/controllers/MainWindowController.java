@@ -3,7 +3,6 @@ package com.duolingo.app.desktop.controllers;
 import com.duolingo.app.interfaces.impl.*;
 import com.duolingo.app.model.*;
 import com.duolingo.app.util.Server;
-import com.duolingo.app.util.ServerRMI;
 import com.jfoenix.controls.JFXToggleButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
