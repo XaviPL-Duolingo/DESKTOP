@@ -3,6 +3,7 @@ package com.duolingo.app.util;
 import com.duolingo.app.interfaces.impl.CategoryImpl;
 import com.duolingo.app.interfaces.impl.CourseImpl;
 import com.duolingo.app.interfaces.impl.LanguageImpl;
+import com.duolingo.app.interfaces.impl.UserImpl;
 import com.duolingo.app.model.Category;
 import com.duolingo.app.model.Course;
 import com.duolingo.app.model.Language;
@@ -55,11 +56,11 @@ public class Server extends Thread{
                 socket = serverSocket.accept();
                 System.out.println("[SERVER] - Nueva conexión con: [" + socket.getInetAddress() + "]");
 
-                DataInputStream dis = new DataInputStream(socket.getInputStream());
+                DataInputStream is = new DataInputStream(socket.getInputStream());
                 ObjectOutputStream os = new ObjectOutputStream(socket.getOutputStream());
 
                 System.out.println("[SERVER] - Creando nuevo hilo...");
-                Thread threadConn = new ClientHandler(socket, dis, os);
+                Thread threadConn = new ClientHandler(socket, is, os);
                 threadConn.start();
 
             } catch (Exception e) {
@@ -80,12 +81,12 @@ public class Server extends Thread{
 class ClientHandler extends Thread{
 
     final Socket socket;
-    final DataInputStream dis;
+    final DataInputStream is;
     final ObjectOutputStream os;
 
-    public ClientHandler(Socket socket, DataInputStream dis, ObjectOutputStream os){
+    public ClientHandler(Socket socket, DataInputStream is, ObjectOutputStream os){
         this.socket = socket;
-        this.dis = dis;
+        this.is = is;
         this.os = os;
     }
 
@@ -96,9 +97,7 @@ class ClientHandler extends Thread{
 
         while (true) {
             try {
-                // os.writeUTF("[SERVER] - What do you want?");
-                clientReceived = dis.readUTF();
-
+                clientReceived = is.readUTF();
                 switch (clientReceived) {
                     case "getAllLanguages":
                         LanguageImpl languageManager = new LanguageImpl();
@@ -109,7 +108,7 @@ class ClientHandler extends Thread{
 
                     case "getAllCoursesByID":
                         CourseImpl courseManager = new CourseImpl();
-                        int idOriginLang = dis.readInt();
+                        int idOriginLang = is.readInt();
                         List<Course> courseList = courseManager.getAllCoursesByID(idOriginLang, 0);
                         os.writeObject(courseList);
                         System.out.println("[SERVER] - SUCCESS: getAllCoursesByID()");
@@ -117,10 +116,24 @@ class ClientHandler extends Thread{
 
                     case "getAllCategoriesByID":
                         CategoryImpl categoryManager = new CategoryImpl();
-                        int idCourse = dis.readInt();
+                        int idCourse = is.readInt();
                         List<Category> categoryList = categoryManager.getAllCategoriesByID(idCourse);
                         os.writeObject(categoryList);
                         System.out.println("[SERVER] - SUCCESS: getAllCategoriesByID()");
+                        break;
+
+                    case "loginUser":
+                        UserImpl userManager = new UserImpl();
+                        boolean success = userManager.loginUser(is.readUTF(), is.readUTF());
+                        os.writeObject(success);
+                        System.out.println("[SERVER] - SUCCESS: loginUser()");
+                        break;
+
+                    case "registerUser":
+                        UserImpl userManager2 = new UserImpl();
+                        boolean success2 = userManager2.registerUser(is.readUTF(), is.readUTF(), is.readUTF(), is.readInt());
+                        os.writeObject(success2);
+                        System.out.println("[SERVER] - SUCCESS: registerUser()");
                         break;
 
                     default:
@@ -139,7 +152,7 @@ class ClientHandler extends Thread{
 
         try {
             this.socket.close();
-            this.dis.close();
+            this.is.close();
             this.os.close();
         } catch (IOException e) {
             e.printStackTrace();
