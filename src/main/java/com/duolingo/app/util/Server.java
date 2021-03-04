@@ -7,6 +7,7 @@ import com.duolingo.app.interfaces.impl.UserImpl;
 import com.duolingo.app.model.Category;
 import com.duolingo.app.model.Course;
 import com.duolingo.app.model.Language;
+import com.duolingo.app.model.User;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -134,6 +135,13 @@ class ClientHandler extends Thread{
                         boolean success2 = userManager2.registerUser(is.readUTF(), is.readUTF(), is.readUTF(), is.readInt());
                         os.writeObject(success2);
                         System.out.println("[SERVER] - SUCCESS: registerUser()");
+                        break;
+
+                    case "getUserData":
+                        UserImpl userManager3 = new UserImpl();
+                        User dataUser = userManager3.getUserData(is.readUTF());
+                        os.writeObject(dataUser);
+                        System.out.println("[SERVER] - SUCCESS: getUserData()");
                         break;
 
                     default:
