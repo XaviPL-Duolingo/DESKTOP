@@ -128,7 +128,7 @@ class ClientHandler extends Thread{
                         break;
                 }
 
-                System.out.println("[SERVER] - Terminada la conexión con: [" + socket.getInetAddress() + "]");
+                System.out.println("[SERVER] - Terminada la conexión con: [" + socket.getInetAddress() + "]\n");
                 break;
 
             } catch (IOException e) {
