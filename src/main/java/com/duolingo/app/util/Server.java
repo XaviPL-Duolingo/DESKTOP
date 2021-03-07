@@ -144,6 +144,13 @@ class ClientHandler extends Thread{
                         System.out.println("[SERVER] - SUCCESS: getUserData()");
                         break;
 
+                    case "getRanking":
+                        UserImpl rankingManaer = new UserImpl();
+                        List<User> rankingList = rankingManaer.getRanking(is.readInt());
+                        os.writeObject(rankingList);
+                        System.out.println("[SERVER] - SUCCESS: getRanking()");
+                        break;
+
                     default:
                         System.out.println("[SERVER] - Peticíon erronea...");
                         break;
