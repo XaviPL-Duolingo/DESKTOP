@@ -1,13 +1,7 @@
 package com.duolingo.app.util;
 
-import com.duolingo.app.interfaces.impl.CategoryImpl;
-import com.duolingo.app.interfaces.impl.CourseImpl;
-import com.duolingo.app.interfaces.impl.LanguageImpl;
-import com.duolingo.app.interfaces.impl.UserImpl;
-import com.duolingo.app.model.Category;
-import com.duolingo.app.model.Course;
-import com.duolingo.app.model.Language;
-import com.duolingo.app.model.User;
+import com.duolingo.app.interfaces.impl.*;
+import com.duolingo.app.model.*;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -95,6 +89,7 @@ class ClientHandler extends Thread{
     public void run() {
 
         String clientReceived;
+        UserImpl userManager = new UserImpl();
 
         while (true) {
             try {
@@ -124,31 +119,34 @@ class ClientHandler extends Thread{
                         break;
 
                     case "loginUser":
-                        UserImpl userManager = new UserImpl();
                         boolean success = userManager.loginUser(is.readUTF(), is.readUTF());
                         os.writeObject(success);
                         System.out.println("[SERVER] - SUCCESS: loginUser()");
                         break;
 
                     case "registerUser":
-                        UserImpl userManager2 = new UserImpl();
-                        boolean success2 = userManager2.registerUser(is.readUTF(), is.readUTF(), is.readUTF(), is.readInt());
+                        boolean success2 = userManager.registerUser(is.readUTF(), is.readUTF(), is.readUTF(), is.readInt());
                         os.writeObject(success2);
                         System.out.println("[SERVER] - SUCCESS: registerUser()");
                         break;
 
                     case "getUserData":
-                        UserImpl userManager3 = new UserImpl();
-                        User dataUser = userManager3.getUserData(is.readUTF());
+                        User dataUser = userManager.getUserData(is.readUTF());
                         os.writeObject(dataUser);
                         System.out.println("[SERVER] - SUCCESS: getUserData()");
                         break;
 
                     case "getRanking":
-                        UserImpl rankingManaer = new UserImpl();
-                        List<User> rankingList = rankingManaer.getRanking(is.readInt());
+                        List<User> rankingList = userManager.getRanking(is.readInt());
                         os.writeObject(rankingList);
                         System.out.println("[SERVER] - SUCCESS: getRanking()");
+                        break;
+
+                    case "getItems":
+                        ItemImpl itemManager = new ItemImpl();
+                        List<Item> itemList = itemManager.getAllItems();
+                        os.writeObject(itemList);
+                        System.out.println("[SERVER] - SUCCESS: getItems()");
                         break;
 
                     default:
