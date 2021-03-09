@@ -149,6 +149,12 @@ class ClientHandler extends Thread{
                         System.out.println("[SERVER] - SUCCESS: getItems()");
                         break;
 
+                    case "buyItem":
+                        boolean buySuccess = userManager.buyItem(is.readInt(), is.readInt());
+                        os.writeObject(buySuccess);
+                        System.out.println("[SERVER] - SUCCESS: buyItem()");
+                        break;
+
                     default:
                         System.out.println("[SERVER] - Peticíon erronea...");
                         break;
