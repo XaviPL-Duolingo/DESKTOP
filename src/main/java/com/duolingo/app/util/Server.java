@@ -155,6 +155,20 @@ class ClientHandler extends Thread{
                         System.out.println("[SERVER] - SUCCESS: buyItem()");
                         break;
 
+                    case "getLevel":
+                        LevelImpl levelManager = new LevelImpl();
+                        Level levelObj = levelManager.getUserNextLevel(is.readInt(), is.readInt());
+                        os.writeObject(levelObj);
+                        System.out.println("[SERVER] - SUCCESS: getLevel()");
+                        break;
+
+                    case "getExercices":
+                        ExerciceImpl exerciceManager = new ExerciceImpl();
+                        List<Exercice> exerciceList = exerciceManager.getAllExercicesByID(is.readInt());
+                        os.writeObject(exerciceList);
+                        System.out.println("[SERVER] - SUCCESS: getExercices()");
+                        break;
+
                     default:
                         System.out.println("[SERVER] - Peticíon erronea...");
                         break;
