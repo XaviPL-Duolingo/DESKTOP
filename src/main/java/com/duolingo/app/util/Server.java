@@ -60,6 +60,7 @@ public class Server extends Thread{
 
             } catch (Exception e) {
                 System.out.println("[SERVER] - Error al recibir connexion...");
+                e.printStackTrace();
                 socket.close();
             }
          }
@@ -169,6 +170,13 @@ class ClientHandler extends Thread{
                         System.out.println("[SERVER] - SUCCESS: getExercices()");
                         break;
 
+                    case "updateUser":
+                        User userObj = userManager.parseJSON(is.readUTF());
+                        boolean updated = userManager.updateUser(userObj);
+                        os.writeObject(updated);
+                        System.out.println("[SERVER] - SUCCESS: updateUser()");
+                        break;
+
                     default:
                         System.out.println("[SERVER] - Peticíon erronea...");
                         break;
@@ -177,7 +185,7 @@ class ClientHandler extends Thread{
                 System.out.println("[SERVER] - Terminada la conexión con: [" + socket.getInetAddress() + "]\n");
                 break;
 
-            } catch (IOException e) {
+            } catch (IOException  e) {
                 System.out.println("[SERVER] - Error al completar la petición...");
                 e.printStackTrace();
             }

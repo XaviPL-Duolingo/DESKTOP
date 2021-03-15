@@ -45,8 +45,7 @@ public class TranslateOpenWindowController implements Initializable {
         btnIsHard.setSelected(exerciceObj.isHard());
 
         try {
-            int i = 1;
-            for (i = 1; i < 100; i++){
+            for (int i = 1; i < 100; i++){
                 listAnswers.getItems().add((String) objectJSON.get("answer"+ i));
             }
         }catch (Exception e){
