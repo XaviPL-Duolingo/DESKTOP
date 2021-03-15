@@ -172,8 +172,8 @@ class ClientHandler extends Thread{
 
                     case "updateUser":
                         User userObj = userManager.parseJSON(is.readUTF());
-                        boolean updated = userManager.updateUser(userObj);
-                        os.writeObject(updated);
+                        userObj = userManager.updateUser(userObj);
+                        os.writeObject(userObj);
                         System.out.println("[SERVER] - SUCCESS: updateUser()");
                         break;
 
