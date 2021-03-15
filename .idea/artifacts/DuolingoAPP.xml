@@ -26,7 +26,7 @@
           <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
         </element>
         <element id="module-output" name="DESKTOP" />
-        <element id="module-output" name="LIB" />
+        <element id="module-output" name="lib" />
       </element>
     </root>
   </artifact>

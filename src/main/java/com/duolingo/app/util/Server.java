@@ -177,6 +177,12 @@ class ClientHandler extends Thread{
                         System.out.println("[SERVER] - SUCCESS: updateUser()");
                         break;
 
+                    case "deleteUser":
+                        boolean isDeleted = userManager.deleteUser(is.readInt());
+                        os.writeObject(isDeleted);
+                        System.out.println("[SERVER] - SUCCESS: deleteUser()");
+                        break;
+
                     default:
                         System.out.println("[SERVER] - Peticíon erronea...");
                         break;
