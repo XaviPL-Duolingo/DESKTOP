@@ -3,7 +3,6 @@ package com.duolingo.app.desktop.controllers.typeExercices;
 import com.duolingo.app.interfaces.impl.ExerciceImpl;
 import com.duolingo.app.model.Exercice;
 import com.jfoenix.controls.JFXToggleButton;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;

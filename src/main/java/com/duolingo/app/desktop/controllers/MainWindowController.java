@@ -1,7 +1,13 @@
 package com.duolingo.app.desktop.controllers;
 
-import com.duolingo.app.interfaces.impl.*;
-import com.duolingo.app.model.*;
+import com.duolingo.app.interfaces.impl.CategoryImpl;
+import com.duolingo.app.interfaces.impl.CourseImpl;
+import com.duolingo.app.interfaces.impl.LanguageImpl;
+import com.duolingo.app.interfaces.impl.LevelImpl;
+import com.duolingo.app.model.Category;
+import com.duolingo.app.model.Course;
+import com.duolingo.app.model.Language;
+import com.duolingo.app.model.Level;
 import com.duolingo.app.util.Server;
 import com.jfoenix.controls.JFXToggleButton;
 import javafx.collections.FXCollections;
@@ -12,7 +18,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;

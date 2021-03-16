@@ -4,7 +4,6 @@ import com.duolingo.app.desktop.controllers.typeExercices.*;
 import com.duolingo.app.interfaces.impl.TypeExerciceImpl;
 import com.duolingo.app.model.TypeExercice;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;

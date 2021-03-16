@@ -6,7 +6,6 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-
 <AnchorPane prefHeight="500.0" prefWidth="420.0" style="-fx-background-color: #1D182F; -fx-background-radius: 30;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.duolingo.app.desktop.controllers.typeExercices.TranslateSortWindowController">
    <children>
       <TextField fx:id="txtQuestion" alignment="CENTER" layoutX="30.0" layoutY="61.0" prefHeight="140.0" prefWidth="360.0" promptText="FRASE A TRADUCIR" style="-fx-background-radius: 30;" />
