@@ -1,11 +1,28 @@
 @font-face {
-    font-family: 'DIN Round';
     src: url('DINRoundPro.ttf') format('ttf');
 }
 
 @font-face {
-    font-family: 'DIN Round Bold';
     src: url('DINRoundPro-Bold.ttf') format('ttf');
+}
+
+.label{
+    -fx-font-family: DINRoundPro-Bold;
+}
+
+.button{
+    -fx-font-size: 15;
+    -fx-font-family: DINRoundPro-Bold;
+}
+
+.button:hover{
+    -fx-font-size: 15;
+    -fx-font-family: DINRoundPro-Bold;
+}
+
+.button:pressed{
+    -fx-font-size: 15;
+    -fx-font-family: DINRoundPro-Bold;
 }
 
 .root {
@@ -13,6 +30,7 @@
 }
 
 .combo-box {
+    -fx-font-family: DINRoundPRO;
     -fx-background-radius:  30;
     -fx-background-color:  #130E21;
     -fx-text-fill: #FFFFFF;
@@ -20,6 +38,7 @@
 }
 
 .combo-box-popup .list-view{
+    -fx-font-family: DINRoundPRO;
     -fx-background-radius:  30 30 30 30;
     -fx-background-color:  #130E21;
     -fx-background-insets: 23 0 10 0;
@@ -28,6 +47,7 @@
 }
 
 .combo-box-popup .list-view .list-cell{
+    -fx-font-family: DINRoundPRO;
     -fx-background-color:  transparent;
     -fx-text-fill: #FFFFFF;
     -fx-cell-size: 45;
@@ -42,6 +62,7 @@
 }
 
 .text-field{
+    -fx-font-family: DINRoundPRO;
     -fx-background-color:  #100C1C;
     -fx-background-radius: 30;
     -fx-text-fill: #FFFFFF;
@@ -57,6 +78,7 @@
 }
 
 .list-cell:odd {
+    -fx-font-family: DINRoundPRO;
     -fx-background-color: transparent;
     -fx-text-fill: white;
     -fx-padding: 10 10 10 10;
@@ -64,6 +86,7 @@
 
 }
 .list-cell:even {
+    -fx-font-family: DINRoundPRO;
     -fx-background-color: transparent;
     -fx-text-fill: white;
     -fx-padding: 10 10 10 10;
@@ -104,25 +127,30 @@
 }
 
 .table-row-cell:even{
+    -fx-font-family: DINRoundPRO;
     -fx-background-color: transparent;
     -fx-text-fill: #FFFFFF;
 }
 
 .table-view:row-selection .table-row-cell:filled:hover {
+    -fx-font-family: DINRoundPRO;
     -fx-background-color: #FF00EE;
     -fx-text-fill: #FFFFFF;
 }
 
 .table-cell:hover {
+    -fx-font-family: DINRoundPRO;
     -fx-background-color: #FF00EE;
 }
 
 .table-view:row-selection .table-row-cell:filled:selected {
+    -fx-font-family: DINRoundPRO;
     -fx-background-color: #FF00EE;
     -fx-text-fill: #FFFFFF;
 }
 
 .table-view .column-header {
+    -fx-font-family: DINRoundPRO;
     -fx-background-color:  #100C1C;
     -fx-text-fill: #FFFFFF;
 }
