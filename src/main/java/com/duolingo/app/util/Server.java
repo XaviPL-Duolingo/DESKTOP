@@ -185,6 +185,12 @@ class ClientHandler extends Thread{
                         System.out.println("[SERVER] - SUCCESS: deleteUser()");
                         break;
 
+                    case "completeLevel":
+                        User userObject = userManager.completeLevel(is.readInt(), is.readInt());
+                        os.writeObject(userObject);
+                        System.out.println("[SERVER] - SUCCESS: completeLevel()");
+                        break;
+
                     default:
                         System.out.println("[SERVER] - Peticíon erronea...");
                         break;
