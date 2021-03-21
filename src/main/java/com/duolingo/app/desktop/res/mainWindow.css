@@ -1,16 +1,37 @@
 @font-face {
-    font-family: 'DIN Round';
-    src: url('DINRoundPro.ttf') format('ttf');
+    src: url('DINRoundPro-Bold.ttf') format('ttf');
 }
 
 @font-face {
-    font-family: 'DIN Round Bold';
-    src: url('DINRoundPro-Bold.ttf') format('ttf');
+    src: url('DINRoundPro.ttf') format('ttf');
+}
+
+.label{
+    -fx-font-family: DINRoundPRO-Bold;
+}
+
+.button{
+    -fx-font-family: DINRoundPRO-Bold;
+    -fx-font-size: 15;
+}
+
+.button:pressed{
+    -fx-font-family: DINRoundPRO-Bold;
+    -fx-font-size: 15;
+}
+
+.button:hover{
+    -fx-font-family: DINRoundPRO-Bold;
+    -fx-font-size: 15;
+}
+
+.jfx-toggle-button{
+    -fx-font-family: DINRoundPRO-Bold;
 }
 
 .root{
     -fx-background-radius: 30;
-    -fx-font-family: 'DIN Round';
+    -fx-font-family: 'DINRoundPRO';
 }
 
 .text-field{
@@ -38,13 +59,13 @@
     -fx-background-insets: 23 0 10 0;
     -fx-padding: 23 0 0 0;
     -fx-text-fill: #FFFFFF;
-    -fx-font-family: 'DIN Round';
+    -fx-font-family: 'DINRoundPRO';
 }
 
 .combo-box-popup .list-view .list-cell{
     -fx-background-color:  transparent;
     -fx-text-fill: #FFFFFF;
-    -fx-font-family: 'DIN Round';
+    -fx-font-family: 'DINRoundPRO';
     -fx-cell-size: 45;
 
 }
