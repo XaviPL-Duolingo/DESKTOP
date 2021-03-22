@@ -191,6 +191,12 @@ class ClientHandler extends Thread{
                         System.out.println("[SERVER] - SUCCESS: completeLevel()");
                         break;
 
+                    case "getUserProgressOnCategory":
+                        int progress = userManager.getUserProgressOnCategory(is.readInt(), is.readInt());
+                        os.writeObject(progress);
+                        System.out.println("[SERVER] - SUCCESS: getUserProgressOnCategory");
+                        break;
+
                     default:
                         System.out.println("[SERVER] - Peticíon erronea...");
                         break;
