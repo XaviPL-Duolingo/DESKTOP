@@ -1,4 +1,5 @@
 # BUHOLINGO | DESKTOP
+![MainFrame](https://i.ibb.co/VvzBpJx/Buholingo-Portada.jpg)
 Repositorio de la parte "SERVER" del proyecto Buholingo. <br>
 Aplicación JAVA hecha con JavaFX encargada de labores administrativas de la BBDD, desde esta aplicación se pueden leer, crear, modificar y eliminar:
  - CURSOS
