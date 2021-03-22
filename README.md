@@ -21,3 +21,14 @@ Aplicación JAVA hecha con JavaFX encargada de labores administrativas de la BBD
 - Posibilidad de visualización demo de los ejercicios de una categoría
 - Creación, modificacion y eliminación de ITEMS 
 - Control de estado SERVER.
+
+## FAQ:
+**VM ARGUMENTS JAVAFX:** 
+```bash
+--module-path src/main/resources/javafx-sdk-11.0.2/lib --add-modules javafx.controls,javafx.fxml
+```
+
+## IMAGENES:
+![MainFrame](https://i.ibb.co/Ry3dcmh/DuoDesk.png)
+![CrearEjercicio](https://i.ibb.co/wQz2JZr/image.png)
+![AddItem](https://i.ibb.co/KV0Yp8V/image.png)
